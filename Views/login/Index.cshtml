@@ -1,0 +1,124 @@
+﻿@model LoginApplication.Models.Users
+
+@{
+    ViewBag.Title = "login";
+    Layout = "~/Views/Shared/_LoginLayout.cshtml";
+}
+<style>
+    .login_btn {
+        background-color: rgb(121,146,168);
+        color: rgb(11, 52, 61);
+    }
+</style>
+<div class="login_wrapper">
+    <div class="row">
+        <div class="col-md-12 col-sm-12  ">
+            <div class="x_panel">
+                <div class="x_title">
+                    <center><img src="~/Contents/build/images/logo.png" alt="..." width="200"></center>
+                    <div class="clearfix"></div>
+                </div>
+                <div class="x_content">
+                    <form id="formlogin" data-parsley-validate class="form-horizontal form-label-left">
+                        <div class="item form-group">
+                            <div class="col-md-12 col-sm-12  form-group has-feedback">
+                                <input type="email" id="Email" name="Email" class="form-control has-feedback-left" placeholder="Username">
+                                <span class="fa fa-user form-control-feedback left" aria-hidden="true"></span>
+                                <span class="email-error"></span>
+                            </div>
+                        </div>
+                        <div class="item form-group">
+                            <div class="col-md-12 col-sm-12  form-group has-feedback">
+                                <input type="password" id="Password" name="Password" class="form-control has-feedback-left" placeholder="*************">
+                                <span class="fa fa-lock form-control-feedback left" aria-hidden="true"></span>
+                                <span class="password-error"></span>
+                            </div>
+                        </div>
+                        <div class="ln_solid"></div>
+                        <div class="item form-group">
+                            <div class="col-md-12 col-sm-12">
+                                <center>
+                                    <input type="button" value="Login as User" class="btn login_btn" id="btnLogin">
+                                </center>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+@section scripts{
+    <script type="text/javascript" src="https://code.jquery.com/jquery-1.9.1.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.1/jquery.validate.min.js"></script>
+    <script>
+$(document).ready(function () {
+
+            $("#formlogin").validate({
+                errorClass: "error fail-alert",
+                validClass: "valid success-alert",
+                rules: {
+                    Email: {
+                        required: true,
+                        maxlength: 200,
+                        email: true
+
+                    },
+                    Password: {
+                        required: true,
+                        minlength: 3
+                    },
+                },
+                messages: {
+                    Email: {
+                        required: "Enter an email",
+                        email: "Enter valid email address",
+                        maxlength: "max 200 characters allowed"
+                    },
+                    Password: {
+                        required: "Enter a password",
+                        minlength: "min length 3"
+                    }
+
+                },
+                errorPlacement: function (error, element) {
+                    var type = $(element).attr("name");
+                    console.log(type);
+
+                    if (type === "Email") {
+                        $(".email-error").append(error);
+                    }
+                    else if (type === "Password") {
+                        $(".password-error").append(error);
+                    }
+
+
+                },
+
+            });
+
+            $('#btnLogin').click(function () {
+                if ($('#formlogin').valid()) {  //call valid for form2 and show the errors
+                    var data = {
+                        Email: $('#Email').val(),
+                        Password: $('#Password').val(),
+                    };
+                    $.post("/Login/LoginProcess",
+                        { users: data },
+                        function (response) {
+                            console.log(response);
+                            if (response.status) {
+                                window.location.href = "/login/DashBoard";
+                            }
+                            else {
+                                alert(response.message);
+                            }
+                        });
+                }
+            });
+});
+    </script>
+}
+
+

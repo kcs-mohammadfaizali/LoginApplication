@@ -1,0 +1,79 @@
+﻿
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+<!-- page content -->
+<div class="right_col" role="main">
+    <div class="">
+        <div class="page-title">
+            <div class="title_left">
+                <h4><i class="fa fa-medkit"></i> Add Medicine</h3>
+            </div>
+        </div>
+
+        <div class="clearfix"></div>
+
+        <div class="x_panel">
+            <div class="x_title">
+                <h2>Medicine Information</h2>
+                <div class="clearfix"></div>
+            </div>
+            <div class="x_content">
+                <form id="AddMedicine" data-parsley-validate class="form-horizontal form-label-left">
+                    <div class="row">
+                        <input type="hidden" id="sr_id" class="form-control has-feedback-left">
+                        <div class="col-md-12 col-sm-12">
+                            <input type="text" id="Medicine_name" class="form-control has-feedback-left" placeholder="Medicine Name">
+                            <span class="fa fa-medkit form-control-feedback left" aria-hidden="true"></span>
+                        </div><br><br><br>
+
+                        <div class="col-md-12 col-sm-12">
+                            <input type="text" id="Price" class="form-control has-feedback-left" placeholder="Price">
+                            <span class="fa fa-dollar form-control-feedback left" aria-hidden="true"></span>
+                        </div> <br><br><br>
+
+                        <div class="col-md-12 col-sm-12">
+                            <input type="text" id="Total_stock" class="form-control has-feedback-left" placeholder="Total Stock">
+                            <span class="fa fa-hourglass-o form-control-feedback left" aria-hidden="true"></span>
+                        </div> <br><br><br>
+
+                        <div class="col-md-12 col-sm-12">
+                            <button id="btnCancel" class="btn btn-primary" type="button">Cancel</button>
+                            <button id="btnEdit" class="btn btn-success">Submit</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+@section scripts{
+    <script>
+        $(document).ready(function () {
+            var f = @Html.Raw(ViewBag.Patients);
+            $('#sr_id').val(f.sr_id);
+            $("#Medicine_name").val(f.Medicine_name);
+            $("#Price").val(f.Price);
+            $("#Total_stock").val(f.Total_stock);
+
+            $('#btnCancel').click(function () {
+                window.location.href = "/Medicine/Index"
+            });
+            $('#btnEdit').click(function () {
+                var data = {
+                    sr_id: $('#sr_id').val(),
+                    Medicine_name: $("#Medicine_name").val(),
+                    Price: $('#Price').val(),
+                    Total_stock: $('#Total_stock').val(),
+
+                };
+                $.post("/Medicine/Edit", { medicine: data }, function () { window.location.href = "/Medicine/Index" });
+            });
+        });
+
+    </script>
+}
+
+
+

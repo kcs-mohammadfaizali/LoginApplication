@@ -1,0 +1,102 @@
+﻿@model LoginApplication.Models.Users
+
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+<div class="right_col" role="main">
+    <div class="">
+        <div class="page-title">
+            <div class="title_left">
+                <h3><i class="fa fa-user-plus"></i> Add User</h3>
+            </div>
+        </div>
+        <div class="clearfix"></div>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-header">
+                        <div class="card-title">User Details</div>
+                    </div>
+                    <div class="card-body">
+                        <form id="AddUser" data-parsley-validate class="form-horizontal form-label-left">
+                            <div class="form-group">
+                                <label for="First_name">First Name</label>
+                                <input type="text" id="First_name" name="First_name" class="form-control" placeholder="">
+                                <span class="text-danger"></span>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="Last_name">Last Name</label>
+                                <input type="text" id="Last_name" name="Last_name" class="form-control" placeholder="">
+                                <span class="text-danger"></span>
+
+                            </div>
+
+                            <div class="form-group">
+                                <label for="Email">Email</label>
+                                <input type="email" id="Email" name="Email" class="form-control" placeholder="">
+                                <span class="text-danger"></span>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="Password">Password</label>
+                                <input type="password" id="Password" name="Password" class="form-control" placeholder="">
+                                <span class="text-danger"></span>
+
+                            </div>
+
+                            <div class="form-group">
+                                <label for="Role">Role</label>
+                                <select class="form-control" id="Role">
+                                    <option value="" disabled>Select</option>
+                                    <option value="User">User</option>
+                                    <option value="Admin">Admin</option>
+                                </select>
+
+                            </div>
+                            <div class="form-check">
+                                <label class="form-check-label">
+                                    <input type="checkbox" id="IsActive" name="IsActive" value="true" class="form-check-input">
+                                    <span class="form-check-sign">Active</span>
+                                </label>
+                            </div><br /><br />
+                            <div class="form-group">
+                                <div class="col-md-offset-2 col-md-10">
+                                    <input id="btnCreate" type="button" value="Create" class="btn btn-success" />
+                                </div>
+                            </div>
+                        </form>
+                        <div class="card-action">
+                            @Html.ActionLink("Back to List", "Index")
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+@section scripts{
+    <script>
+        $(document).ready(function () {
+            
+            $('#btnCreate').click(function () {
+                var Active = false;
+                if (document.getElementById('IsActive').checked) {
+                    Active = true;
+                }
+                var data = {
+                    First_name: $('#First_name').val(),
+                    Last_name: $('#Last_name').val(),
+                    Email: $('#Email').val(),
+                    Password: $('#Password').val(),
+                    Role: $('#Role').val(),
+                    IsActive: Active,
+                    
+                };
+                $.post("/User/Create", { users: data }, function () { window.location.href = "/User/Index" });
+            });
+        });
+
+    </script>
+}

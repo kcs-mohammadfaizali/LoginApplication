@@ -1,0 +1,1116 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props" Condition="Exists('packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{30613818-088E-49E9-A990-54014A24D464}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>LoginApplication</RootNamespace>
+    <AssemblyName>LoginApplication</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <MvcBuildViews>false</MvcBuildViews>
+    <UseIISExpress>true</UseIISExpress>
+    <Use64BitIISExpress />
+    <IISExpressSSLPort>44321</IISExpressSSLPort>
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <UseGlobalApplicationHostFile />
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.Bcl.AsyncInterfaces, Version=7.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.Bcl.AsyncInterfaces.7.0.0\lib\net462\Microsoft.Bcl.AsyncInterfaces.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System" />
+    <Reference Include="System.Buffers, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>packages\System.Buffers.4.5.1\lib\net461\System.Buffers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Memory, Version=4.0.1.2, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>packages\System.Memory.4.5.5\lib\net461\System.Memory.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Numerics" />
+    <Reference Include="System.Numerics.Vectors, Version=4.1.4.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>packages\System.Numerics.Vectors.4.5.0\lib\net46\System.Numerics.Vectors.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime.CompilerServices.Unsafe, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>packages\System.Runtime.CompilerServices.Unsafe.6.0.0\lib\net461\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Text.Encodings.Web, Version=7.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>packages\System.Text.Encodings.Web.7.0.0\lib\net462\System.Text.Encodings.Web.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Text.Json, Version=7.0.0.2, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>packages\System.Text.Json.7.0.2\lib\net462\System.Text.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Threading.Tasks.Extensions, Version=4.2.0.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>packages\System.Threading.Tasks.Extensions.4.5.4\lib\net461\System.Threading.Tasks.Extensions.dll</HintPath>
+    </Reference>
+    <Reference Include="System.ValueTuple, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>packages\System.ValueTuple.4.5.0\lib\net47\System.ValueTuple.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Abstractions" />
+    <Reference Include="System.Web.Routing" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="Microsoft.Web.Infrastructure, Version=2.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>packages\Microsoft.Web.Infrastructure.2.0.1\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http">
+    </Reference>
+    <Reference Include="System.Net.Http.WebRequest">
+    </Reference>
+    <Reference Include="System.Web.Helpers, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>packages\Microsoft.AspNet.WebPages.3.2.9\lib\net45\System.Web.Helpers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Mvc, Version=5.2.9.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>packages\Microsoft.AspNet.Mvc.5.2.9\lib\net45\System.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Optimization">
+      <HintPath>packages\Microsoft.AspNet.Web.Optimization.1.1.3\lib\net40\System.Web.Optimization.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>packages\Microsoft.AspNet.Razor.3.2.9\lib\net45\System.Web.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>packages\Microsoft.AspNet.WebPages.3.2.9\lib\net45\System.Web.WebPages.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Deployment, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>packages\Microsoft.AspNet.WebPages.3.2.9\lib\net45\System.Web.WebPages.Deployment.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>packages\Microsoft.AspNet.WebPages.3.2.9\lib\net45\System.Web.WebPages.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>packages\Newtonsoft.Json.12.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="WebGrease">
+      <Private>True</Private>
+      <HintPath>packages\WebGrease.1.6.0\lib\WebGrease.dll</HintPath>
+    </Reference>
+    <Reference Include="Antlr3.Runtime">
+      <Private>True</Private>
+      <HintPath>packages\Antlr.3.5.0.2\lib\Antlr3.Runtime.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform">
+      <HintPath>packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="App_Start\BundleConfig.cs" />
+    <Compile Include="App_Start\FilterConfig.cs" />
+    <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\LoginController.cs" />
+    <Compile Include="Controllers\MedicineController.cs" />
+    <Compile Include="Controllers\PatientsController.cs" />
+    <Compile Include="Controllers\UserController.cs" />
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Models\DBHandler.cs" />
+    <Compile Include="Models\Medicine.cs" />
+    <Compile Include="Models\Patients.cs" />
+    <Compile Include="Models\Users.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Contents\admin\css\maps\jquery-jvectormap-2.0.3.css" />
+    <Content Include="Contents\admin\images\alaxan.png" />
+    <Content Include="Contents\admin\images\american-express.png" />
+    <Content Include="Contents\admin\images\cropper.jpg" />
+    <Content Include="Contents\admin\images\favicon.ico" />
+    <Content Include="Contents\admin\images\img.jpg" />
+    <Content Include="Contents\admin\images\inbox.png" />
+    <Content Include="Contents\admin\images\mastercard.png" />
+    <Content Include="Contents\admin\images\media.jpg" />
+    <Content Include="Contents\admin\images\paypal.png" />
+    <Content Include="Contents\admin\images\picture.jpg" />
+    <Content Include="Contents\admin\images\prod-1.jpg" />
+    <Content Include="Contents\admin\images\prod-2.jpg" />
+    <Content Include="Contents\admin\images\prod-3.jpg" />
+    <Content Include="Contents\admin\images\prod-4.jpg" />
+    <Content Include="Contents\admin\images\prod-5.jpg" />
+    <Content Include="Contents\admin\images\user.png" />
+    <Content Include="Contents\admin\images\visa.png" />
+    <Content Include="Contents\admin\js\datepicker\daterangepicker.js" />
+    <Content Include="Contents\admin\js\moment\moment.min.js" />
+    <Content Include="Contents\build\css\custom.css" />
+    <Content Include="Contents\build\css\custom.min.css" />
+    <Content Include="Contents\build\images\logo.png" />
+    <Content Include="Contents\build\js\custom.js" />
+    <Content Include="Contents\build\js\custom.min.js" />
+    <Content Include="Contents\cashier\css\maps\jquery-jvectormap-2.0.3.css" />
+    <Content Include="Contents\cashier\images\american-express.png" />
+    <Content Include="Contents\cashier\images\cropper.jpg" />
+    <Content Include="Contents\cashier\images\favicon.ico" />
+    <Content Include="Contents\cashier\images\img.jpg" />
+    <Content Include="Contents\cashier\images\inbox.png" />
+    <Content Include="Contents\cashier\images\mastercard.png" />
+    <Content Include="Contents\cashier\images\media.jpg" />
+    <Content Include="Contents\cashier\images\paypal.png" />
+    <Content Include="Contents\cashier\images\picture.jpg" />
+    <Content Include="Contents\cashier\images\prod-1.jpg" />
+    <Content Include="Contents\cashier\images\prod-2.jpg" />
+    <Content Include="Contents\cashier\images\prod-3.jpg" />
+    <Content Include="Contents\cashier\images\prod-4.jpg" />
+    <Content Include="Contents\cashier\images\prod-5.jpg" />
+    <Content Include="Contents\cashier\images\user.png" />
+    <Content Include="Contents\cashier\images\visa.png" />
+    <Content Include="Contents\cashier\js\chart.js" />
+    <Content Include="Contents\cashier\js\datepicker\daterangepicker.js" />
+    <Content Include="Contents\cashier\js\moment\moment.min.js" />
+    <Content Include="Contents\index.html" />
+    <Content Include="Contents\vendors\bootstrap\dist\css\bootstrap-grid.css" />
+    <Content Include="Contents\vendors\bootstrap\dist\css\bootstrap-grid.min.css" />
+    <Content Include="Contents\vendors\bootstrap\dist\css\bootstrap-reboot.css" />
+    <Content Include="Contents\vendors\bootstrap\dist\css\bootstrap-reboot.min.css" />
+    <Content Include="Contents\vendors\bootstrap\dist\css\bootstrap.css" />
+    <Content Include="Contents\vendors\bootstrap\dist\css\bootstrap.min.css" />
+    <Content Include="Contents\vendors\bootstrap\dist\js\bootstrap.bundle.js" />
+    <Content Include="Contents\vendors\bootstrap\dist\js\bootstrap.bundle.min.js" />
+    <Content Include="Contents\vendors\bootstrap\dist\js\bootstrap.js" />
+    <Content Include="Contents\vendors\bootstrap\dist\js\bootstrap.min.js" />
+    <Content Include="Contents\vendors\Chart.js\Chart.bundle.js" />
+    <Content Include="Contents\vendors\Chart.js\Chart.bundle.min.js" />
+    <Content Include="Contents\vendors\Chart.js\Chart.js" />
+    <Content Include="Contents\vendors\Chart.js\Chart.min.js" />
+    <Content Include="Contents\vendors\datatables.net-bs\css\dataTables.bootstrap.css" />
+    <Content Include="Contents\vendors\datatables.net-bs\css\dataTables.bootstrap.min.css" />
+    <Content Include="Contents\vendors\datatables.net-bs\js\dataTables.bootstrap.js" />
+    <Content Include="Contents\vendors\datatables.net-bs\js\dataTables.bootstrap.min.js" />
+    <Content Include="Contents\vendors\datatables.net-bs\License.txt" />
+    <Content Include="Contents\vendors\datatables.net-buttons-bs\css\buttons.bootstrap.css" />
+    <Content Include="Contents\vendors\datatables.net-buttons-bs\css\buttons.bootstrap.min.css" />
+    <Content Include="Contents\vendors\datatables.net-buttons-bs\js\buttons.bootstrap.js" />
+    <Content Include="Contents\vendors\datatables.net-buttons-bs\js\buttons.bootstrap.min.js" />
+    <Content Include="Contents\vendors\datatables.net-buttons-bs\License.txt" />
+    <Content Include="Contents\vendors\datatables.net-buttons\js\buttons.colVis.js" />
+    <Content Include="Contents\vendors\datatables.net-buttons\js\buttons.colVis.min.js" />
+    <Content Include="Contents\vendors\datatables.net-buttons\js\buttons.flash.js" />
+    <Content Include="Contents\vendors\datatables.net-buttons\js\buttons.flash.min.js" />
+    <Content Include="Contents\vendors\datatables.net-buttons\js\buttons.html5.js" />
+    <Content Include="Contents\vendors\datatables.net-buttons\js\buttons.html5.min.js" />
+    <Content Include="Contents\vendors\datatables.net-buttons\js\buttons.print.js" />
+    <Content Include="Contents\vendors\datatables.net-buttons\js\buttons.print.min.js" />
+    <Content Include="Contents\vendors\datatables.net-buttons\js\dataTables.buttons.js" />
+    <Content Include="Contents\vendors\datatables.net-buttons\js\dataTables.buttons.min.js" />
+    <Content Include="Contents\vendors\datatables.net-buttons\License.txt" />
+    <Content Include="Contents\vendors\datatables.net-fixedheader-bs\css\fixedHeader.bootstrap.css" />
+    <Content Include="Contents\vendors\datatables.net-fixedheader-bs\css\fixedHeader.bootstrap.min.css" />
+    <Content Include="Contents\vendors\datatables.net-fixedheader-bs\License.txt" />
+    <Content Include="Contents\vendors\datatables.net-fixedheader\js\dataTables.fixedHeader.js" />
+    <Content Include="Contents\vendors\datatables.net-fixedheader\js\dataTables.fixedHeader.min.js" />
+    <Content Include="Contents\vendors\datatables.net-fixedheader\License.txt" />
+    <Content Include="Contents\vendors\datatables.net-keytable\js\dataTables.keyTable.js" />
+    <Content Include="Contents\vendors\datatables.net-keytable\js\dataTables.keyTable.min.js" />
+    <Content Include="Contents\vendors\datatables.net-keytable\License.txt" />
+    <Content Include="Contents\vendors\datatables.net-responsive-bs\css\responsive.bootstrap.css" />
+    <Content Include="Contents\vendors\datatables.net-responsive-bs\css\responsive.bootstrap.min.css" />
+    <Content Include="Contents\vendors\datatables.net-responsive-bs\js\responsive.bootstrap.js" />
+    <Content Include="Contents\vendors\datatables.net-responsive-bs\License.txt" />
+    <Content Include="Contents\vendors\datatables.net-responsive\js\dataTables.responsive.js" />
+    <Content Include="Contents\vendors\datatables.net-responsive\js\dataTables.responsive.min.js" />
+    <Content Include="Contents\vendors\datatables.net-responsive\License.txt" />
+    <Content Include="Contents\vendors\datatables.net-scroller-bs\css\scroller.bootstrap.css" />
+    <Content Include="Contents\vendors\datatables.net-scroller-bs\css\scroller.bootstrap.min.css" />
+    <Content Include="Contents\vendors\datatables.net-scroller-bs\License.txt" />
+    <Content Include="Contents\vendors\datatables.net-scroller\js\dataTables.scroller.js" />
+    <Content Include="Contents\vendors\datatables.net-scroller\js\dataTables.scroller.min.js" />
+    <Content Include="Contents\vendors\datatables.net-scroller\License.txt" />
+    <Content Include="Contents\vendors\datatables.net\js\jquery.dataTables.js" />
+    <Content Include="Contents\vendors\datatables.net\js\jquery.dataTables.min.js" />
+    <Content Include="Contents\vendors\datatables.net\License.txt" />
+    <Content Include="Contents\vendors\font-awesome\.gitignore" />
+    <Content Include="Contents\vendors\font-awesome\css\font-awesome.css" />
+    <Content Include="Contents\vendors\font-awesome\css\font-awesome.min.css" />
+    <Content Include="Contents\vendors\font-awesome\fonts\fontawesome-webfont.svg" />
+    <Content Include="Contents\vendors\font-awesome\HELP-US-OUT.txt" />
+    <Content Include="Contents\vendors\jquery.inputmask\dist\inputmask\inputmask.date.extensions.js" />
+    <Content Include="Contents\vendors\jquery.inputmask\dist\inputmask\inputmask.dependencyLib.jquery.js" />
+    <Content Include="Contents\vendors\jquery.inputmask\dist\inputmask\inputmask.extensions.js" />
+    <Content Include="Contents\vendors\jquery.inputmask\dist\inputmask\inputmask.js" />
+    <Content Include="Contents\vendors\jquery.inputmask\dist\inputmask\inputmask.numeric.extensions.js" />
+    <Content Include="Contents\vendors\jquery.inputmask\dist\inputmask\inputmask.phone.extensions.js" />
+    <Content Include="Contents\vendors\jquery.inputmask\dist\inputmask\inputmask.regex.extensions.js" />
+    <Content Include="Contents\vendors\jquery.inputmask\dist\inputmask\jquery.inputmask.js" />
+    <Content Include="Contents\vendors\jquery.inputmask\dist\jquery.inputmask.bundle.js" />
+    <Content Include="Contents\vendors\jquery.inputmask\dist\min\inputmask\inputmask.date.extensions.min.js" />
+    <Content Include="Contents\vendors\jquery.inputmask\dist\min\inputmask\inputmask.dependencyLib.jquery.min.js" />
+    <Content Include="Contents\vendors\jquery.inputmask\dist\min\inputmask\inputmask.extensions.min.js" />
+    <Content Include="Contents\vendors\jquery.inputmask\dist\min\inputmask\inputmask.min.js" />
+    <Content Include="Contents\vendors\jquery.inputmask\dist\min\inputmask\inputmask.numeric.extensions.min.js" />
+    <Content Include="Contents\vendors\jquery.inputmask\dist\min\inputmask\inputmask.phone.extensions.min.js" />
+    <Content Include="Contents\vendors\jquery.inputmask\dist\min\inputmask\inputmask.regex.extensions.min.js" />
+    <Content Include="Contents\vendors\jquery.inputmask\dist\min\inputmask\jquery.inputmask.min.js" />
+    <Content Include="Contents\vendors\jquery.inputmask\dist\min\jquery.inputmask.bundle.min.js" />
+    <Content Include="Contents\vendors\jquery.inputmask\extra\bindings\inputmask.binding.js" />
+    <Content Include="Contents\vendors\jquery.inputmask\extra\dependencyLibs\inputmask.dependencyLib.jqlite.js" />
+    <Content Include="Contents\vendors\jquery.inputmask\extra\dependencyLibs\inputmask.dependencyLib.js" />
+    <Content Include="Contents\vendors\jquery.inputmask\extra\phone-codes\phone-be.js" />
+    <Content Include="Contents\vendors\jquery.inputmask\extra\phone-codes\phone-codes.js" />
+    <Content Include="Contents\vendors\jquery.inputmask\extra\phone-codes\phone-nl.js" />
+    <Content Include="Contents\vendors\jquery.inputmask\extra\phone-codes\phone-ru.js" />
+    <Content Include="Contents\vendors\jquery.inputmask\extra\phone-codes\phone-uk.js" />
+    <Content Include="Contents\vendors\jquery\AUTHORS.txt" />
+    <Content Include="Contents\vendors\jquery\dist\jquery.js" />
+    <Content Include="Contents\vendors\jquery\dist\jquery.min.js" />
+    <Content Include="Contents\vendors\jquery\external\sizzle\dist\sizzle.js" />
+    <Content Include="Contents\vendors\jquery\external\sizzle\dist\sizzle.min.js" />
+    <Content Include="Contents\vendors\jquery\external\sizzle\LICENSE.txt" />
+    <Content Include="Contents\vendors\jquery\LICENSE.txt" />
+    <Content Include="Contents\vendors\jquery\src\ajax.js" />
+    <Content Include="Contents\vendors\jquery\src\ajax\jsonp.js" />
+    <Content Include="Contents\vendors\jquery\src\ajax\load.js" />
+    <Content Include="Contents\vendors\jquery\src\ajax\parseJSON.js" />
+    <Content Include="Contents\vendors\jquery\src\ajax\parseXML.js" />
+    <Content Include="Contents\vendors\jquery\src\ajax\script.js" />
+    <Content Include="Contents\vendors\jquery\src\ajax\var\location.js" />
+    <Content Include="Contents\vendors\jquery\src\ajax\var\nonce.js" />
+    <Content Include="Contents\vendors\jquery\src\ajax\var\rquery.js" />
+    <Content Include="Contents\vendors\jquery\src\ajax\xhr.js" />
+    <Content Include="Contents\vendors\jquery\src\attributes.js" />
+    <Content Include="Contents\vendors\jquery\src\attributes\attr.js" />
+    <Content Include="Contents\vendors\jquery\src\attributes\classes.js" />
+    <Content Include="Contents\vendors\jquery\src\attributes\prop.js" />
+    <Content Include="Contents\vendors\jquery\src\attributes\support.js" />
+    <Content Include="Contents\vendors\jquery\src\attributes\val.js" />
+    <Content Include="Contents\vendors\jquery\src\callbacks.js" />
+    <Content Include="Contents\vendors\jquery\src\core.js" />
+    <Content Include="Contents\vendors\jquery\src\core\access.js" />
+    <Content Include="Contents\vendors\jquery\src\core\init.js" />
+    <Content Include="Contents\vendors\jquery\src\core\parseHTML.js" />
+    <Content Include="Contents\vendors\jquery\src\core\ready.js" />
+    <Content Include="Contents\vendors\jquery\src\core\var\rsingleTag.js" />
+    <Content Include="Contents\vendors\jquery\src\css.js" />
+    <Content Include="Contents\vendors\jquery\src\css\addGetHookIf.js" />
+    <Content Include="Contents\vendors\jquery\src\css\adjustCSS.js" />
+    <Content Include="Contents\vendors\jquery\src\css\curCSS.js" />
+    <Content Include="Contents\vendors\jquery\src\css\defaultDisplay.js" />
+    <Content Include="Contents\vendors\jquery\src\css\hiddenVisibleSelectors.js" />
+    <Content Include="Contents\vendors\jquery\src\css\showHide.js" />
+    <Content Include="Contents\vendors\jquery\src\css\support.js" />
+    <Content Include="Contents\vendors\jquery\src\css\var\cssExpand.js" />
+    <Content Include="Contents\vendors\jquery\src\css\var\getStyles.js" />
+    <Content Include="Contents\vendors\jquery\src\css\var\isHidden.js" />
+    <Content Include="Contents\vendors\jquery\src\css\var\rmargin.js" />
+    <Content Include="Contents\vendors\jquery\src\css\var\rnumnonpx.js" />
+    <Content Include="Contents\vendors\jquery\src\css\var\swap.js" />
+    <Content Include="Contents\vendors\jquery\src\data.js" />
+    <Content Include="Contents\vendors\jquery\src\data\Data.js" />
+    <Content Include="Contents\vendors\jquery\src\data\var\acceptData.js" />
+    <Content Include="Contents\vendors\jquery\src\data\var\dataPriv.js" />
+    <Content Include="Contents\vendors\jquery\src\data\var\dataUser.js" />
+    <Content Include="Contents\vendors\jquery\src\deferred.js" />
+    <Content Include="Contents\vendors\jquery\src\deprecated.js" />
+    <Content Include="Contents\vendors\jquery\src\dimensions.js" />
+    <Content Include="Contents\vendors\jquery\src\effects.js" />
+    <Content Include="Contents\vendors\jquery\src\effects\animatedSelector.js" />
+    <Content Include="Contents\vendors\jquery\src\effects\Tween.js" />
+    <Content Include="Contents\vendors\jquery\src\event.js" />
+    <Content Include="Contents\vendors\jquery\src\event\ajax.js" />
+    <Content Include="Contents\vendors\jquery\src\event\alias.js" />
+    <Content Include="Contents\vendors\jquery\src\event\focusin.js" />
+    <Content Include="Contents\vendors\jquery\src\event\support.js" />
+    <Content Include="Contents\vendors\jquery\src\event\trigger.js" />
+    <Content Include="Contents\vendors\jquery\src\exports\amd.js" />
+    <Content Include="Contents\vendors\jquery\src\exports\global.js" />
+    <Content Include="Contents\vendors\jquery\src\intro.js" />
+    <Content Include="Contents\vendors\jquery\src\jquery.js" />
+    <Content Include="Contents\vendors\jquery\src\manipulation.js" />
+    <Content Include="Contents\vendors\jquery\src\manipulation\buildFragment.js" />
+    <Content Include="Contents\vendors\jquery\src\manipulation\getAll.js" />
+    <Content Include="Contents\vendors\jquery\src\manipulation\setGlobalEval.js" />
+    <Content Include="Contents\vendors\jquery\src\manipulation\support.js" />
+    <Content Include="Contents\vendors\jquery\src\manipulation\var\rcheckableType.js" />
+    <Content Include="Contents\vendors\jquery\src\manipulation\var\rscriptType.js" />
+    <Content Include="Contents\vendors\jquery\src\manipulation\var\rtagName.js" />
+    <Content Include="Contents\vendors\jquery\src\manipulation\wrapMap.js" />
+    <Content Include="Contents\vendors\jquery\src\manipulation\_evalUrl.js" />
+    <Content Include="Contents\vendors\jquery\src\offset.js" />
+    <Content Include="Contents\vendors\jquery\src\outro.js" />
+    <Content Include="Contents\vendors\jquery\src\queue.js" />
+    <Content Include="Contents\vendors\jquery\src\queue\delay.js" />
+    <Content Include="Contents\vendors\jquery\src\selector-native.js" />
+    <Content Include="Contents\vendors\jquery\src\selector-sizzle.js" />
+    <Content Include="Contents\vendors\jquery\src\selector.js" />
+    <Content Include="Contents\vendors\jquery\src\serialize.js" />
+    <Content Include="Contents\vendors\jquery\src\traversing.js" />
+    <Content Include="Contents\vendors\jquery\src\traversing\findFilter.js" />
+    <Content Include="Contents\vendors\jquery\src\traversing\var\dir.js" />
+    <Content Include="Contents\vendors\jquery\src\traversing\var\rneedsContext.js" />
+    <Content Include="Contents\vendors\jquery\src\traversing\var\siblings.js" />
+    <Content Include="Contents\vendors\jquery\src\var\arr.js" />
+    <Content Include="Contents\vendors\jquery\src\var\class2type.js" />
+    <Content Include="Contents\vendors\jquery\src\var\concat.js" />
+    <Content Include="Contents\vendors\jquery\src\var\document.js" />
+    <Content Include="Contents\vendors\jquery\src\var\documentElement.js" />
+    <Content Include="Contents\vendors\jquery\src\var\hasOwn.js" />
+    <Content Include="Contents\vendors\jquery\src\var\indexOf.js" />
+    <Content Include="Contents\vendors\jquery\src\var\pnum.js" />
+    <Content Include="Contents\vendors\jquery\src\var\push.js" />
+    <Content Include="Contents\vendors\jquery\src\var\rcssNum.js" />
+    <Content Include="Contents\vendors\jquery\src\var\rnotwhite.js" />
+    <Content Include="Contents\vendors\jquery\src\var\slice.js" />
+    <Content Include="Contents\vendors\jquery\src\var\support.js" />
+    <Content Include="Contents\vendors\jquery\src\var\toString.js" />
+    <Content Include="Contents\vendors\jquery\src\wrap.js" />
+    <Content Include="Contents\vendors\morris.js\.gitignore" />
+    <Content Include="Contents\vendors\morris.js\examples\area-as-line.html" />
+    <Content Include="Contents\vendors\morris.js\examples\area.html" />
+    <Content Include="Contents\vendors\morris.js\examples\bar-colors.html" />
+    <Content Include="Contents\vendors\morris.js\examples\bar-no-axes.html" />
+    <Content Include="Contents\vendors\morris.js\examples\bar.html" />
+    <Content Include="Contents\vendors\morris.js\examples\days.html" />
+    <Content Include="Contents\vendors\morris.js\examples\decimal-custom-hover.html" />
+    <Content Include="Contents\vendors\morris.js\examples\diagonal-xlabels-bar.html" />
+    <Content Include="Contents\vendors\morris.js\examples\diagonal-xlabels.html" />
+    <Content Include="Contents\vendors\morris.js\examples\donut-colors.html" />
+    <Content Include="Contents\vendors\morris.js\examples\donut-formatter.html" />
+    <Content Include="Contents\vendors\morris.js\examples\donut.html" />
+    <Content Include="Contents\vendors\morris.js\examples\dst.html" />
+    <Content Include="Contents\vendors\morris.js\examples\events.html" />
+    <Content Include="Contents\vendors\morris.js\examples\goals.html" />
+    <Content Include="Contents\vendors\morris.js\examples\lib\example.css" />
+    <Content Include="Contents\vendors\morris.js\examples\lib\example.js" />
+    <Content Include="Contents\vendors\morris.js\examples\months-no-smooth.html" />
+    <Content Include="Contents\vendors\morris.js\examples\negative.html" />
+    <Content Include="Contents\vendors\morris.js\examples\no-grid.html" />
+    <Content Include="Contents\vendors\morris.js\examples\non-continuous.html" />
+    <Content Include="Contents\vendors\morris.js\examples\non-date.html" />
+    <Content Include="Contents\vendors\morris.js\examples\quarters.html" />
+    <Content Include="Contents\vendors\morris.js\examples\resize.html" />
+    <Content Include="Contents\vendors\morris.js\examples\stacked_bars.html" />
+    <Content Include="Contents\vendors\morris.js\examples\timestamps.html" />
+    <Content Include="Contents\vendors\morris.js\examples\updating.html" />
+    <Content Include="Contents\vendors\morris.js\examples\weeks.html" />
+    <Content Include="Contents\vendors\morris.js\examples\years.html" />
+    <Content Include="Contents\vendors\morris.js\examples\_template.html" />
+    <Content Include="Contents\vendors\morris.js\Gruntfile.js" />
+    <Content Include="Contents\vendors\morris.js\morris.css" />
+    <Content Include="Contents\vendors\morris.js\morris.js" />
+    <Content Include="Contents\vendors\morris.js\morris.min.js" />
+    <Content Include="Contents\vendors\morris.js\spec\specs.html" />
+    <Content Include="Contents\vendors\morris.js\spec\viz\examples.js" />
+    <Content Include="Contents\vendors\morris.js\spec\viz\exemplary\area0.png" />
+    <Content Include="Contents\vendors\morris.js\spec\viz\exemplary\bar0.png" />
+    <Content Include="Contents\vendors\morris.js\spec\viz\exemplary\line0.png" />
+    <Content Include="Contents\vendors\morris.js\spec\viz\exemplary\stacked_bar0.png" />
+    <Content Include="Contents\vendors\morris.js\spec\viz\test.html" />
+    <Content Include="Contents\vendors\morris.js\spec\viz\visual_specs.js" />
+    <Content Include="Contents\vendors\nprogress\nprogress.css" />
+    <Content Include="Contents\vendors\pdfmake\build\Chart.min.js" />
+    <Content Include="Contents\vendors\pdfmake\build\pdfmake.min.js" />
+    <Content Include="Contents\vendors\raphael\dev\banner.txt" />
+    <Content Include="Contents\vendors\raphael\dev\raphael.amd.js" />
+    <Content Include="Contents\vendors\raphael\dev\raphael.core.js" />
+    <Content Include="Contents\vendors\raphael\dev\raphael.svg.js" />
+    <Content Include="Contents\vendors\raphael\dev\raphael.vml.js" />
+    <Content Include="Contents\vendors\raphael\dev\test\svg\dom.js" />
+    <Content Include="Contents\vendors\raphael\dev\test\vml\dom.js" />
+    <Content Include="Contents\vendors\raphael\license.txt" />
+    <Content Include="Contents\vendors\raphael\raphael.js" />
+    <Content Include="Contents\vendors\raphael\raphael.min.js" />
+    <Content Include="Contents\vendors\raphael\raphael.no-deps.js" />
+    <Content Include="Contents\vendors\raphael\raphael.no-deps.min.js" />
+    <Content Include="Contents\vendors\raphael\webpack.config.js" />
+    <Content Include="Contents\vendors\validator\.gitattributes" />
+    <Content Include="Contents\vendors\validator\.gitignore" />
+    <Content Include="Contents\vendors\validator\fv.css" />
+    <Content Include="Contents\vendors\validator\index.html" />
+    <Content Include="Contents\vendors\validator\multifield.js" />
+    <Content Include="Contents\vendors\validator\validator.js" />
+    <Content Include="Content\bootstrap-theme.css" />
+    <Content Include="Content\bootstrap-theme.min.css" />
+    <Content Include="Content\bootstrap.css" />
+    <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\custom.min.css" />
+    <Content Include="Content\font-awesome.min.css" />
+    <Content Include="favicon.ico" />
+    <Content Include="fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Global.asax" />
+    <Content Include="Content\Site.css" />
+    <Content Include="Scripts\bootstrap.js" />
+    <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="Contents\admin\add-cashier.php" />
+    <Content Include="Contents\admin\add-category.php" />
+    <Content Include="Contents\admin\add-medicine.php" />
+    <Content Include="Contents\admin\add-supplier.php" />
+    <Content Include="Contents\admin\cashier.php" />
+    <Content Include="Contents\admin\category.php" />
+    <Content Include="Contents\admin\company.php" />
+    <Content Include="Contents\admin\include\footer.php" />
+    <Content Include="Contents\admin\include\header.php" />
+    <Content Include="Contents\admin\include\menufooter.php" />
+    <Content Include="Contents\admin\include\sidebar.php" />
+    <Content Include="Contents\admin\include\topnav.php" />
+    <Content Include="Contents\admin\index.php" />
+    <Content Include="Contents\admin\medicine.php" />
+    <Content Include="Contents\admin\report.php" />
+    <Content Include="Contents\admin\sales-detail.php" />
+    <Content Include="Contents\admin\sales.php" />
+    <Content Include="Contents\admin\supplier.php" />
+    <Content Include="Contents\cashier\daily-sales.php" />
+    <Content Include="Contents\cashier\include\footer.php" />
+    <Content Include="Contents\cashier\include\header.php" />
+    <Content Include="Contents\cashier\include\menufooter.php" />
+    <Content Include="Contents\cashier\include\sidebar.php" />
+    <Content Include="Contents\cashier\include\topnav.php" />
+    <Content Include="Contents\cashier\index.php" />
+    <Content Include="Contents\cashier\profile.php" />
+    <Content Include="Contents\cashier\sales.php" />
+    <Content Include="Contents\vendors\bootstrap\dist\css\bootstrap-grid.css.map" />
+    <Content Include="Contents\vendors\bootstrap\dist\css\bootstrap-grid.min.css.map" />
+    <Content Include="Contents\vendors\bootstrap\dist\css\bootstrap-reboot.css.map" />
+    <Content Include="Contents\vendors\bootstrap\dist\css\bootstrap-reboot.min.css.map" />
+    <Content Include="Contents\vendors\bootstrap\dist\css\bootstrap.css.map" />
+    <Content Include="Contents\vendors\bootstrap\dist\css\bootstrap.min.css.map" />
+    <Content Include="Contents\vendors\bootstrap\dist\js\bootstrap.bundle.js.map" />
+    <Content Include="Contents\vendors\bootstrap\dist\js\bootstrap.bundle.min.js.map" />
+    <Content Include="Contents\vendors\bootstrap\dist\js\bootstrap.js.map" />
+    <Content Include="Contents\vendors\bootstrap\dist\js\bootstrap.min.js.map" />
+    <Content Include="Contents\vendors\datatables.net-bs\.bower.json" />
+    <Content Include="Contents\vendors\datatables.net-bs\bower.json" />
+    <Content Include="Contents\vendors\datatables.net-bs\Readme.md" />
+    <Content Include="Contents\vendors\datatables.net-buttons-bs\.bower.json" />
+    <Content Include="Contents\vendors\datatables.net-buttons-bs\bower.json" />
+    <Content Include="Contents\vendors\datatables.net-buttons-bs\Readme.md" />
+    <Content Include="Contents\vendors\datatables.net-buttons\.bower.json" />
+    <Content Include="Contents\vendors\datatables.net-buttons\bower.json" />
+    <Content Include="Contents\vendors\datatables.net-buttons\Readme.md" />
+    <Content Include="Contents\vendors\datatables.net-fixedheader-bs\.bower.json" />
+    <Content Include="Contents\vendors\datatables.net-fixedheader-bs\bower.json" />
+    <Content Include="Contents\vendors\datatables.net-fixedheader-bs\Readme.md" />
+    <Content Include="Contents\vendors\datatables.net-fixedheader\.bower.json" />
+    <Content Include="Contents\vendors\datatables.net-fixedheader\bower.json" />
+    <Content Include="Contents\vendors\datatables.net-fixedheader\Readme.md" />
+    <Content Include="Contents\vendors\datatables.net-keytable\.bower.json" />
+    <Content Include="Contents\vendors\datatables.net-keytable\bower.json" />
+    <Content Include="Contents\vendors\datatables.net-keytable\Readme.md" />
+    <Content Include="Contents\vendors\datatables.net-responsive-bs\.bower.json" />
+    <Content Include="Contents\vendors\datatables.net-responsive-bs\bower.json" />
+    <Content Include="Contents\vendors\datatables.net-responsive-bs\Readme.md" />
+    <Content Include="Contents\vendors\datatables.net-responsive\.bower.json" />
+    <Content Include="Contents\vendors\datatables.net-responsive\bower.json" />
+    <Content Include="Contents\vendors\datatables.net-responsive\Readme.md" />
+    <Content Include="Contents\vendors\datatables.net-scroller-bs\.bower.json" />
+    <Content Include="Contents\vendors\datatables.net-scroller-bs\bower.json" />
+    <Content Include="Contents\vendors\datatables.net-scroller-bs\Readme.md" />
+    <Content Include="Contents\vendors\datatables.net-scroller\.bower.json" />
+    <Content Include="Contents\vendors\datatables.net-scroller\bower.json" />
+    <Content Include="Contents\vendors\datatables.net-scroller\Readme.md" />
+    <Content Include="Contents\vendors\datatables.net\.bower.json" />
+    <Content Include="Contents\vendors\datatables.net\bower.json" />
+    <Content Include="Contents\vendors\datatables.net\Readme.md" />
+    <Content Include="Contents\vendors\font-awesome\.bower.json" />
+    <Content Include="Contents\vendors\font-awesome\.npmignore" />
+    <Content Include="Contents\vendors\font-awesome\bower.json" />
+    <Content Include="Contents\vendors\font-awesome\css\font-awesome.css.map" />
+    <Content Include="Contents\vendors\font-awesome\fonts\fontawesome-webfont.eot" />
+    <Content Include="Contents\vendors\font-awesome\fonts\fontawesome-webfont.ttf" />
+    <Content Include="Contents\vendors\font-awesome\fonts\fontawesome-webfont.woff" />
+    <Content Include="Contents\vendors\font-awesome\fonts\fontawesome-webfont.woff2" />
+    <Content Include="Contents\vendors\font-awesome\fonts\FontAwesome.otf" />
+    <Content Include="Contents\vendors\font-awesome\less\animated.less" />
+    <Content Include="Contents\vendors\font-awesome\less\bordered-pulled.less" />
+    <Content Include="Contents\vendors\font-awesome\less\core.less" />
+    <Content Include="Contents\vendors\font-awesome\less\fixed-width.less" />
+    <Content Include="Contents\vendors\font-awesome\less\font-awesome.less" />
+    <Content Include="Contents\vendors\font-awesome\less\icons.less" />
+    <Content Include="Contents\vendors\font-awesome\less\larger.less" />
+    <Content Include="Contents\vendors\font-awesome\less\list.less" />
+    <Content Include="Contents\vendors\font-awesome\less\mixins.less" />
+    <Content Include="Contents\vendors\font-awesome\less\path.less" />
+    <Content Include="Contents\vendors\font-awesome\less\rotated-flipped.less" />
+    <Content Include="Contents\vendors\font-awesome\less\screen-reader.less" />
+    <Content Include="Contents\vendors\font-awesome\less\stacked.less" />
+    <Content Include="Contents\vendors\font-awesome\less\variables.less" />
+    <Content Include="Contents\vendors\font-awesome\scss\font-awesome.scss" />
+    <Content Include="Contents\vendors\font-awesome\scss\_animated.scss" />
+    <Content Include="Contents\vendors\font-awesome\scss\_bordered-pulled.scss" />
+    <Content Include="Contents\vendors\font-awesome\scss\_core.scss" />
+    <Content Include="Contents\vendors\font-awesome\scss\_fixed-width.scss" />
+    <Content Include="Contents\vendors\font-awesome\scss\_icons.scss" />
+    <Content Include="Contents\vendors\font-awesome\scss\_larger.scss" />
+    <Content Include="Contents\vendors\font-awesome\scss\_list.scss" />
+    <Content Include="Contents\vendors\font-awesome\scss\_mixins.scss" />
+    <Content Include="Contents\vendors\font-awesome\scss\_path.scss" />
+    <Content Include="Contents\vendors\font-awesome\scss\_rotated-flipped.scss" />
+    <Content Include="Contents\vendors\font-awesome\scss\_screen-reader.scss" />
+    <Content Include="Contents\vendors\font-awesome\scss\_stacked.scss" />
+    <Content Include="Contents\vendors\font-awesome\scss\_variables.scss" />
+    <Content Include="Contents\vendors\jquery.inputmask\.bower.json" />
+    <Content Include="Contents\vendors\jquery.inputmask\bower.json" />
+    <Content Include="Contents\vendors\jquery\.bower.json" />
+    <Content Include="Contents\vendors\jquery\bower.json" />
+    <Content Include="Contents\vendors\jquery\dist\jquery.min.map" />
+    <Content Include="Contents\vendors\jquery\external\sizzle\dist\sizzle.min.map" />
+    <Content Include="Contents\vendors\jquery\README.md" />
+    <Content Include="Contents\vendors\jquery\src\.jshintrc" />
+    <Content Include="Contents\vendors\morris.js\.bower.json" />
+    <Content Include="Contents\vendors\morris.js\.travis.yml" />
+    <Content Include="Contents\vendors\morris.js\bower.json" />
+    <Content Include="Contents\vendors\morris.js\bower.travis.json" />
+    <Content Include="Contents\vendors\morris.js\less\morris.core.less" />
+    <Content Include="Contents\vendors\morris.js\lib\morris.area.coffee" />
+    <Content Include="Contents\vendors\morris.js\lib\morris.bar.coffee" />
+    <Content Include="Contents\vendors\morris.js\lib\morris.coffee" />
+    <Content Include="Contents\vendors\morris.js\lib\morris.donut.coffee" />
+    <Content Include="Contents\vendors\morris.js\lib\morris.grid.coffee" />
+    <Content Include="Contents\vendors\morris.js\lib\morris.hover.coffee" />
+    <Content Include="Contents\vendors\morris.js\lib\morris.line.coffee" />
+    <Content Include="Contents\vendors\morris.js\package.json" />
+    <Content Include="Contents\vendors\morris.js\README.md" />
+    <Content Include="Contents\vendors\morris.js\spec\lib\area\area_spec.coffee" />
+    <Content Include="Contents\vendors\morris.js\spec\lib\bar\bar_spec.coffee" />
+    <Content Include="Contents\vendors\morris.js\spec\lib\bar\colours.coffee" />
+    <Content Include="Contents\vendors\morris.js\spec\lib\commas_spec.coffee" />
+    <Content Include="Contents\vendors\morris.js\spec\lib\donut\donut_spec.coffee" />
+    <Content Include="Contents\vendors\morris.js\spec\lib\grid\auto_grid_lines_spec.coffee" />
+    <Content Include="Contents\vendors\morris.js\spec\lib\grid\set_data_spec.coffee" />
+    <Content Include="Contents\vendors\morris.js\spec\lib\grid\y_label_format_spec.coffee" />
+    <Content Include="Contents\vendors\morris.js\spec\lib\hover_spec.coffee" />
+    <Content Include="Contents\vendors\morris.js\spec\lib\label_series_spec.coffee" />
+    <Content Include="Contents\vendors\morris.js\spec\lib\line\line_spec.coffee" />
+    <Content Include="Contents\vendors\morris.js\spec\lib\pad_spec.coffee" />
+    <Content Include="Contents\vendors\morris.js\spec\lib\parse_time_spec.coffee" />
+    <Content Include="Contents\vendors\morris.js\spec\support\placeholder.coffee" />
+    <Content Include="Contents\vendors\morris.js\spec\viz\run.sh" />
+    <Content Include="Contents\vendors\raphael\.bower.json" />
+    <Content Include="Contents\vendors\raphael\bower.json" />
+    <Content Include="Contents\vendors\validator\.bower.json" />
+    <Content Include="Contents\vendors\validator\package.json" />
+    <Content Include="Contents\vendors\validator\README.md" />
+    <Content Include="Contents\vendors\animate.css\animate.min.css" />
+    <None Include="Scripts\jquery-3.4.1.intellisense.js" />
+    <Content Include="Scripts\jquery-3.4.1.js" />
+    <Content Include="Scripts\jquery-3.4.1.min.js" />
+    <Content Include="Scripts\jquery-3.4.1.slim.js" />
+    <Content Include="Scripts\jquery-3.4.1.slim.min.js" />
+    <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery.validate.js" />
+    <Content Include="Scripts\jquery.validate.min.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Scripts\modernizr-2.8.3.js" />
+    <Content Include="Scripts\vendors\bootstrap\dist\css\bootstrap-grid.css" />
+    <Content Include="Scripts\vendors\bootstrap\dist\css\bootstrap-grid.min.css" />
+    <Content Include="Scripts\vendors\bootstrap\dist\css\bootstrap-reboot.css" />
+    <Content Include="Scripts\vendors\bootstrap\dist\css\bootstrap-reboot.min.css" />
+    <Content Include="Scripts\vendors\bootstrap\dist\css\bootstrap.css" />
+    <Content Include="Scripts\vendors\bootstrap\dist\css\bootstrap.min.css" />
+    <Content Include="Scripts\vendors\bootstrap\dist\js\bootstrap.bundle.js" />
+    <Content Include="Scripts\vendors\bootstrap\dist\js\bootstrap.bundle.min.js" />
+    <Content Include="Scripts\vendors\bootstrap\dist\js\bootstrap.js" />
+    <Content Include="Scripts\vendors\bootstrap\dist\js\bootstrap.min.js" />
+    <Content Include="Scripts\vendors\Chart.js\Chart.bundle.js" />
+    <Content Include="Scripts\vendors\Chart.js\Chart.bundle.min.js" />
+    <Content Include="Scripts\vendors\Chart.js\Chart.js" />
+    <Content Include="Scripts\vendors\Chart.js\Chart.min.js" />
+    <Content Include="Scripts\vendors\datatables.net-bs\css\dataTables.bootstrap.css" />
+    <Content Include="Scripts\vendors\datatables.net-bs\css\dataTables.bootstrap.min.css" />
+    <Content Include="Scripts\vendors\datatables.net-bs\js\dataTables.bootstrap.js" />
+    <Content Include="Scripts\vendors\datatables.net-bs\js\dataTables.bootstrap.min.js" />
+    <Content Include="Scripts\vendors\datatables.net-bs\License.txt" />
+    <Content Include="Scripts\vendors\datatables.net-buttons-bs\css\buttons.bootstrap.css" />
+    <Content Include="Scripts\vendors\datatables.net-buttons-bs\css\buttons.bootstrap.min.css" />
+    <Content Include="Scripts\vendors\datatables.net-buttons-bs\js\buttons.bootstrap.js" />
+    <Content Include="Scripts\vendors\datatables.net-buttons-bs\js\buttons.bootstrap.min.js" />
+    <Content Include="Scripts\vendors\datatables.net-buttons-bs\License.txt" />
+    <Content Include="Scripts\vendors\datatables.net-buttons\js\buttons.colVis.js" />
+    <Content Include="Scripts\vendors\datatables.net-buttons\js\buttons.colVis.min.js" />
+    <Content Include="Scripts\vendors\datatables.net-buttons\js\buttons.flash.js" />
+    <Content Include="Scripts\vendors\datatables.net-buttons\js\buttons.flash.min.js" />
+    <Content Include="Scripts\vendors\datatables.net-buttons\js\buttons.html5.js" />
+    <Content Include="Scripts\vendors\datatables.net-buttons\js\buttons.html5.min.js" />
+    <Content Include="Scripts\vendors\datatables.net-buttons\js\buttons.print.js" />
+    <Content Include="Scripts\vendors\datatables.net-buttons\js\buttons.print.min.js" />
+    <Content Include="Scripts\vendors\datatables.net-buttons\js\dataTables.buttons.js" />
+    <Content Include="Scripts\vendors\datatables.net-buttons\js\dataTables.buttons.min.js" />
+    <Content Include="Scripts\vendors\datatables.net-buttons\License.txt" />
+    <Content Include="Scripts\vendors\datatables.net-fixedheader-bs\css\fixedHeader.bootstrap.css" />
+    <Content Include="Scripts\vendors\datatables.net-fixedheader-bs\css\fixedHeader.bootstrap.min.css" />
+    <Content Include="Scripts\vendors\datatables.net-fixedheader-bs\License.txt" />
+    <Content Include="Scripts\vendors\datatables.net-fixedheader\js\dataTables.fixedHeader.js" />
+    <Content Include="Scripts\vendors\datatables.net-fixedheader\js\dataTables.fixedHeader.min.js" />
+    <Content Include="Scripts\vendors\datatables.net-fixedheader\License.txt" />
+    <Content Include="Scripts\vendors\datatables.net-keytable\js\dataTables.keyTable.js" />
+    <Content Include="Scripts\vendors\datatables.net-keytable\js\dataTables.keyTable.min.js" />
+    <Content Include="Scripts\vendors\datatables.net-keytable\License.txt" />
+    <Content Include="Scripts\vendors\datatables.net-responsive-bs\css\responsive.bootstrap.css" />
+    <Content Include="Scripts\vendors\datatables.net-responsive-bs\css\responsive.bootstrap.min.css" />
+    <Content Include="Scripts\vendors\datatables.net-responsive-bs\js\responsive.bootstrap.js" />
+    <Content Include="Scripts\vendors\datatables.net-responsive-bs\License.txt" />
+    <Content Include="Scripts\vendors\datatables.net-responsive\js\dataTables.responsive.js" />
+    <Content Include="Scripts\vendors\datatables.net-responsive\js\dataTables.responsive.min.js" />
+    <Content Include="Scripts\vendors\datatables.net-responsive\License.txt" />
+    <Content Include="Scripts\vendors\datatables.net-scroller-bs\css\scroller.bootstrap.css" />
+    <Content Include="Scripts\vendors\datatables.net-scroller-bs\css\scroller.bootstrap.min.css" />
+    <Content Include="Scripts\vendors\datatables.net-scroller-bs\License.txt" />
+    <Content Include="Scripts\vendors\datatables.net-scroller\js\dataTables.scroller.js" />
+    <Content Include="Scripts\vendors\datatables.net-scroller\js\dataTables.scroller.min.js" />
+    <Content Include="Scripts\vendors\datatables.net-scroller\License.txt" />
+    <Content Include="Scripts\vendors\datatables.net\js\jquery.dataTables.js" />
+    <Content Include="Scripts\vendors\datatables.net\js\jquery.dataTables.min.js" />
+    <Content Include="Scripts\vendors\datatables.net\License.txt" />
+    <Content Include="Scripts\vendors\font-awesome\.gitignore" />
+    <Content Include="Scripts\vendors\font-awesome\css\font-awesome.css" />
+    <Content Include="Scripts\vendors\font-awesome\css\font-awesome.min.css" />
+    <Content Include="Scripts\vendors\font-awesome\fonts\fontawesome-webfont.svg" />
+    <Content Include="Scripts\vendors\font-awesome\HELP-US-OUT.txt" />
+    <Content Include="Scripts\vendors\jquery.inputmask\dist\inputmask\inputmask.date.extensions.js" />
+    <Content Include="Scripts\vendors\jquery.inputmask\dist\inputmask\inputmask.dependencyLib.jquery.js" />
+    <Content Include="Scripts\vendors\jquery.inputmask\dist\inputmask\inputmask.extensions.js" />
+    <Content Include="Scripts\vendors\jquery.inputmask\dist\inputmask\inputmask.js" />
+    <Content Include="Scripts\vendors\jquery.inputmask\dist\inputmask\inputmask.numeric.extensions.js" />
+    <Content Include="Scripts\vendors\jquery.inputmask\dist\inputmask\inputmask.phone.extensions.js" />
+    <Content Include="Scripts\vendors\jquery.inputmask\dist\inputmask\inputmask.regex.extensions.js" />
+    <Content Include="Scripts\vendors\jquery.inputmask\dist\inputmask\jquery.inputmask.js" />
+    <Content Include="Scripts\vendors\jquery.inputmask\dist\jquery.inputmask.bundle.js" />
+    <Content Include="Scripts\vendors\jquery.inputmask\dist\min\inputmask\inputmask.date.extensions.min.js" />
+    <Content Include="Scripts\vendors\jquery.inputmask\dist\min\inputmask\inputmask.dependencyLib.jquery.min.js" />
+    <Content Include="Scripts\vendors\jquery.inputmask\dist\min\inputmask\inputmask.extensions.min.js" />
+    <Content Include="Scripts\vendors\jquery.inputmask\dist\min\inputmask\inputmask.min.js" />
+    <Content Include="Scripts\vendors\jquery.inputmask\dist\min\inputmask\inputmask.numeric.extensions.min.js" />
+    <Content Include="Scripts\vendors\jquery.inputmask\dist\min\inputmask\inputmask.phone.extensions.min.js" />
+    <Content Include="Scripts\vendors\jquery.inputmask\dist\min\inputmask\inputmask.regex.extensions.min.js" />
+    <Content Include="Scripts\vendors\jquery.inputmask\dist\min\inputmask\jquery.inputmask.min.js" />
+    <Content Include="Scripts\vendors\jquery.inputmask\dist\min\jquery.inputmask.bundle.min.js" />
+    <Content Include="Scripts\vendors\jquery.inputmask\extra\bindings\inputmask.binding.js" />
+    <Content Include="Scripts\vendors\jquery.inputmask\extra\dependencyLibs\inputmask.dependencyLib.jqlite.js" />
+    <Content Include="Scripts\vendors\jquery.inputmask\extra\dependencyLibs\inputmask.dependencyLib.js" />
+    <Content Include="Scripts\vendors\jquery.inputmask\extra\phone-codes\phone-be.js" />
+    <Content Include="Scripts\vendors\jquery.inputmask\extra\phone-codes\phone-codes.js" />
+    <Content Include="Scripts\vendors\jquery.inputmask\extra\phone-codes\phone-nl.js" />
+    <Content Include="Scripts\vendors\jquery.inputmask\extra\phone-codes\phone-ru.js" />
+    <Content Include="Scripts\vendors\jquery.inputmask\extra\phone-codes\phone-uk.js" />
+    <Content Include="Scripts\vendors\jquery\AUTHORS.txt" />
+    <Content Include="Scripts\vendors\jquery\dist\jquery.js" />
+    <Content Include="Scripts\vendors\jquery\dist\jquery.min.js" />
+    <Content Include="Scripts\vendors\jquery\external\sizzle\dist\sizzle.js" />
+    <Content Include="Scripts\vendors\jquery\external\sizzle\dist\sizzle.min.js" />
+    <Content Include="Scripts\vendors\jquery\external\sizzle\LICENSE.txt" />
+    <Content Include="Scripts\vendors\jquery\LICENSE.txt" />
+    <Content Include="Scripts\vendors\jquery\src\ajax.js" />
+    <Content Include="Scripts\vendors\jquery\src\ajax\jsonp.js" />
+    <Content Include="Scripts\vendors\jquery\src\ajax\load.js" />
+    <Content Include="Scripts\vendors\jquery\src\ajax\parseJSON.js" />
+    <Content Include="Scripts\vendors\jquery\src\ajax\parseXML.js" />
+    <Content Include="Scripts\vendors\jquery\src\ajax\script.js" />
+    <Content Include="Scripts\vendors\jquery\src\ajax\var\location.js" />
+    <Content Include="Scripts\vendors\jquery\src\ajax\var\nonce.js" />
+    <Content Include="Scripts\vendors\jquery\src\ajax\var\rquery.js" />
+    <Content Include="Scripts\vendors\jquery\src\ajax\xhr.js" />
+    <Content Include="Scripts\vendors\jquery\src\attributes.js" />
+    <Content Include="Scripts\vendors\jquery\src\attributes\attr.js" />
+    <Content Include="Scripts\vendors\jquery\src\attributes\classes.js" />
+    <Content Include="Scripts\vendors\jquery\src\attributes\prop.js" />
+    <Content Include="Scripts\vendors\jquery\src\attributes\support.js" />
+    <Content Include="Scripts\vendors\jquery\src\attributes\val.js" />
+    <Content Include="Scripts\vendors\jquery\src\callbacks.js" />
+    <Content Include="Scripts\vendors\jquery\src\core.js" />
+    <Content Include="Scripts\vendors\jquery\src\core\access.js" />
+    <Content Include="Scripts\vendors\jquery\src\core\init.js" />
+    <Content Include="Scripts\vendors\jquery\src\core\parseHTML.js" />
+    <Content Include="Scripts\vendors\jquery\src\core\ready.js" />
+    <Content Include="Scripts\vendors\jquery\src\core\var\rsingleTag.js" />
+    <Content Include="Scripts\vendors\jquery\src\css.js" />
+    <Content Include="Scripts\vendors\jquery\src\css\addGetHookIf.js" />
+    <Content Include="Scripts\vendors\jquery\src\css\adjustCSS.js" />
+    <Content Include="Scripts\vendors\jquery\src\css\curCSS.js" />
+    <Content Include="Scripts\vendors\jquery\src\css\defaultDisplay.js" />
+    <Content Include="Scripts\vendors\jquery\src\css\hiddenVisibleSelectors.js" />
+    <Content Include="Scripts\vendors\jquery\src\css\showHide.js" />
+    <Content Include="Scripts\vendors\jquery\src\css\support.js" />
+    <Content Include="Scripts\vendors\jquery\src\css\var\cssExpand.js" />
+    <Content Include="Scripts\vendors\jquery\src\css\var\getStyles.js" />
+    <Content Include="Scripts\vendors\jquery\src\css\var\isHidden.js" />
+    <Content Include="Scripts\vendors\jquery\src\css\var\rmargin.js" />
+    <Content Include="Scripts\vendors\jquery\src\css\var\rnumnonpx.js" />
+    <Content Include="Scripts\vendors\jquery\src\css\var\swap.js" />
+    <Content Include="Scripts\vendors\jquery\src\data.js" />
+    <Content Include="Scripts\vendors\jquery\src\data\Data.js" />
+    <Content Include="Scripts\vendors\jquery\src\data\var\acceptData.js" />
+    <Content Include="Scripts\vendors\jquery\src\data\var\dataPriv.js" />
+    <Content Include="Scripts\vendors\jquery\src\data\var\dataUser.js" />
+    <Content Include="Scripts\vendors\jquery\src\deferred.js" />
+    <Content Include="Scripts\vendors\jquery\src\deprecated.js" />
+    <Content Include="Scripts\vendors\jquery\src\dimensions.js" />
+    <Content Include="Scripts\vendors\jquery\src\effects.js" />
+    <Content Include="Scripts\vendors\jquery\src\effects\animatedSelector.js" />
+    <Content Include="Scripts\vendors\jquery\src\effects\Tween.js" />
+    <Content Include="Scripts\vendors\jquery\src\event.js" />
+    <Content Include="Scripts\vendors\jquery\src\event\ajax.js" />
+    <Content Include="Scripts\vendors\jquery\src\event\alias.js" />
+    <Content Include="Scripts\vendors\jquery\src\event\focusin.js" />
+    <Content Include="Scripts\vendors\jquery\src\event\support.js" />
+    <Content Include="Scripts\vendors\jquery\src\event\trigger.js" />
+    <Content Include="Scripts\vendors\jquery\src\exports\amd.js" />
+    <Content Include="Scripts\vendors\jquery\src\exports\global.js" />
+    <Content Include="Scripts\vendors\jquery\src\intro.js" />
+    <Content Include="Scripts\vendors\jquery\src\jquery.js" />
+    <Content Include="Scripts\vendors\jquery\src\manipulation.js" />
+    <Content Include="Scripts\vendors\jquery\src\manipulation\buildFragment.js" />
+    <Content Include="Scripts\vendors\jquery\src\manipulation\getAll.js" />
+    <Content Include="Scripts\vendors\jquery\src\manipulation\setGlobalEval.js" />
+    <Content Include="Scripts\vendors\jquery\src\manipulation\support.js" />
+    <Content Include="Scripts\vendors\jquery\src\manipulation\var\rcheckableType.js" />
+    <Content Include="Scripts\vendors\jquery\src\manipulation\var\rscriptType.js" />
+    <Content Include="Scripts\vendors\jquery\src\manipulation\var\rtagName.js" />
+    <Content Include="Scripts\vendors\jquery\src\manipulation\wrapMap.js" />
+    <Content Include="Scripts\vendors\jquery\src\manipulation\_evalUrl.js" />
+    <Content Include="Scripts\vendors\jquery\src\offset.js" />
+    <Content Include="Scripts\vendors\jquery\src\outro.js" />
+    <Content Include="Scripts\vendors\jquery\src\queue.js" />
+    <Content Include="Scripts\vendors\jquery\src\queue\delay.js" />
+    <Content Include="Scripts\vendors\jquery\src\selector-native.js" />
+    <Content Include="Scripts\vendors\jquery\src\selector-sizzle.js" />
+    <Content Include="Scripts\vendors\jquery\src\selector.js" />
+    <Content Include="Scripts\vendors\jquery\src\serialize.js" />
+    <Content Include="Scripts\vendors\jquery\src\traversing.js" />
+    <Content Include="Scripts\vendors\jquery\src\traversing\findFilter.js" />
+    <Content Include="Scripts\vendors\jquery\src\traversing\var\dir.js" />
+    <Content Include="Scripts\vendors\jquery\src\traversing\var\rneedsContext.js" />
+    <Content Include="Scripts\vendors\jquery\src\traversing\var\siblings.js" />
+    <Content Include="Scripts\vendors\jquery\src\var\arr.js" />
+    <Content Include="Scripts\vendors\jquery\src\var\class2type.js" />
+    <Content Include="Scripts\vendors\jquery\src\var\concat.js" />
+    <Content Include="Scripts\vendors\jquery\src\var\document.js" />
+    <Content Include="Scripts\vendors\jquery\src\var\documentElement.js" />
+    <Content Include="Scripts\vendors\jquery\src\var\hasOwn.js" />
+    <Content Include="Scripts\vendors\jquery\src\var\indexOf.js" />
+    <Content Include="Scripts\vendors\jquery\src\var\pnum.js" />
+    <Content Include="Scripts\vendors\jquery\src\var\push.js" />
+    <Content Include="Scripts\vendors\jquery\src\var\rcssNum.js" />
+    <Content Include="Scripts\vendors\jquery\src\var\rnotwhite.js" />
+    <Content Include="Scripts\vendors\jquery\src\var\slice.js" />
+    <Content Include="Scripts\vendors\jquery\src\var\support.js" />
+    <Content Include="Scripts\vendors\jquery\src\var\toString.js" />
+    <Content Include="Scripts\vendors\jquery\src\wrap.js" />
+    <Content Include="Scripts\vendors\morris.js\.gitignore" />
+    <Content Include="Scripts\vendors\morris.js\examples\area-as-line.html" />
+    <Content Include="Scripts\vendors\morris.js\examples\area.html" />
+    <Content Include="Scripts\vendors\morris.js\examples\bar-colors.html" />
+    <Content Include="Scripts\vendors\morris.js\examples\bar-no-axes.html" />
+    <Content Include="Scripts\vendors\morris.js\examples\bar.html" />
+    <Content Include="Scripts\vendors\morris.js\examples\days.html" />
+    <Content Include="Scripts\vendors\morris.js\examples\decimal-custom-hover.html" />
+    <Content Include="Scripts\vendors\morris.js\examples\diagonal-xlabels-bar.html" />
+    <Content Include="Scripts\vendors\morris.js\examples\diagonal-xlabels.html" />
+    <Content Include="Scripts\vendors\morris.js\examples\donut-colors.html" />
+    <Content Include="Scripts\vendors\morris.js\examples\donut-formatter.html" />
+    <Content Include="Scripts\vendors\morris.js\examples\donut.html" />
+    <Content Include="Scripts\vendors\morris.js\examples\dst.html" />
+    <Content Include="Scripts\vendors\morris.js\examples\events.html" />
+    <Content Include="Scripts\vendors\morris.js\examples\goals.html" />
+    <Content Include="Scripts\vendors\morris.js\examples\lib\example.css" />
+    <Content Include="Scripts\vendors\morris.js\examples\lib\example.js" />
+    <Content Include="Scripts\vendors\morris.js\examples\months-no-smooth.html" />
+    <Content Include="Scripts\vendors\morris.js\examples\negative.html" />
+    <Content Include="Scripts\vendors\morris.js\examples\no-grid.html" />
+    <Content Include="Scripts\vendors\morris.js\examples\non-continuous.html" />
+    <Content Include="Scripts\vendors\morris.js\examples\non-date.html" />
+    <Content Include="Scripts\vendors\morris.js\examples\quarters.html" />
+    <Content Include="Scripts\vendors\morris.js\examples\resize.html" />
+    <Content Include="Scripts\vendors\morris.js\examples\stacked_bars.html" />
+    <Content Include="Scripts\vendors\morris.js\examples\timestamps.html" />
+    <Content Include="Scripts\vendors\morris.js\examples\updating.html" />
+    <Content Include="Scripts\vendors\morris.js\examples\weeks.html" />
+    <Content Include="Scripts\vendors\morris.js\examples\years.html" />
+    <Content Include="Scripts\vendors\morris.js\examples\_template.html" />
+    <Content Include="Scripts\vendors\morris.js\Gruntfile.js" />
+    <Content Include="Scripts\vendors\morris.js\morris.css" />
+    <Content Include="Scripts\vendors\morris.js\morris.js" />
+    <Content Include="Scripts\vendors\morris.js\morris.min.js" />
+    <Content Include="Scripts\vendors\morris.js\spec\specs.html" />
+    <Content Include="Scripts\vendors\morris.js\spec\viz\examples.js" />
+    <Content Include="Scripts\vendors\morris.js\spec\viz\exemplary\area0.png" />
+    <Content Include="Scripts\vendors\morris.js\spec\viz\exemplary\bar0.png" />
+    <Content Include="Scripts\vendors\morris.js\spec\viz\exemplary\line0.png" />
+    <Content Include="Scripts\vendors\morris.js\spec\viz\exemplary\stacked_bar0.png" />
+    <Content Include="Scripts\vendors\morris.js\spec\viz\test.html" />
+    <Content Include="Scripts\vendors\morris.js\spec\viz\visual_specs.js" />
+    <Content Include="Scripts\vendors\raphael\dev\banner.txt" />
+    <Content Include="Scripts\vendors\raphael\dev\raphael.amd.js" />
+    <Content Include="Scripts\vendors\raphael\dev\raphael.core.js" />
+    <Content Include="Scripts\vendors\raphael\dev\raphael.svg.js" />
+    <Content Include="Scripts\vendors\raphael\dev\raphael.vml.js" />
+    <Content Include="Scripts\vendors\raphael\dev\test\svg\dom.js" />
+    <Content Include="Scripts\vendors\raphael\dev\test\vml\dom.js" />
+    <Content Include="Scripts\vendors\raphael\license.txt" />
+    <Content Include="Scripts\vendors\raphael\raphael.js" />
+    <Content Include="Scripts\vendors\raphael\raphael.min.js" />
+    <Content Include="Scripts\vendors\raphael\raphael.no-deps.js" />
+    <Content Include="Scripts\vendors\raphael\raphael.no-deps.min.js" />
+    <Content Include="Scripts\vendors\raphael\webpack.config.js" />
+    <Content Include="Scripts\vendors\validator\.gitattributes" />
+    <Content Include="Scripts\vendors\validator\.gitignore" />
+    <Content Include="Scripts\vendors\validator\fv.css" />
+    <Content Include="Scripts\vendors\validator\index.html" />
+    <Content Include="Scripts\vendors\validator\multifield.js" />
+    <Content Include="Scripts\vendors\validator\validator.js" />
+    <Content Include="Web.config" />
+    <Content Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Views\Web.config" />
+    <Content Include="Views\_ViewStart.cshtml" />
+    <Content Include="Views\Shared\Error.cshtml" />
+    <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Views\Home\About.cshtml" />
+    <Content Include="Views\Home\Contact.cshtml" />
+    <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Shared\_LoginLayout.cshtml" />
+    <Content Include="Views\login\Index.cshtml" />
+    <Content Include="Views\login\UserDashBoard.cshtml" />
+    <Content Include="Views\Shared\_AdminLayout.cshtml" />
+    <Content Include="Scripts\vendors\bootstrap\dist\css\bootstrap-grid.css.map" />
+    <Content Include="Scripts\vendors\bootstrap\dist\css\bootstrap-grid.min.css.map" />
+    <Content Include="Scripts\vendors\bootstrap\dist\css\bootstrap-reboot.css.map" />
+    <Content Include="Scripts\vendors\bootstrap\dist\css\bootstrap-reboot.min.css.map" />
+    <Content Include="Scripts\vendors\bootstrap\dist\css\bootstrap.css.map" />
+    <Content Include="Scripts\vendors\bootstrap\dist\css\bootstrap.min.css.map" />
+    <Content Include="Scripts\vendors\bootstrap\dist\js\bootstrap.bundle.js.map" />
+    <Content Include="Scripts\vendors\bootstrap\dist\js\bootstrap.bundle.min.js.map" />
+    <Content Include="Scripts\vendors\bootstrap\dist\js\bootstrap.js.map" />
+    <Content Include="Scripts\vendors\bootstrap\dist\js\bootstrap.min.js.map" />
+    <Content Include="Scripts\vendors\datatables.net\.bower.json" />
+    <Content Include="Scripts\vendors\datatables.net\bower.json" />
+    <Content Include="Scripts\vendors\datatables.net\Readme.md" />
+    <Content Include="Scripts\vendors\datatables.net-bs\.bower.json" />
+    <Content Include="Scripts\vendors\datatables.net-bs\bower.json" />
+    <Content Include="Scripts\vendors\datatables.net-bs\Readme.md" />
+    <Content Include="Scripts\vendors\datatables.net-buttons\.bower.json" />
+    <Content Include="Scripts\vendors\datatables.net-buttons\bower.json" />
+    <Content Include="Scripts\vendors\datatables.net-buttons\Readme.md" />
+    <Content Include="Scripts\vendors\datatables.net-buttons-bs\.bower.json" />
+    <Content Include="Scripts\vendors\datatables.net-buttons-bs\bower.json" />
+    <Content Include="Scripts\vendors\datatables.net-buttons-bs\Readme.md" />
+    <Content Include="Scripts\vendors\datatables.net-fixedheader\.bower.json" />
+    <Content Include="Scripts\vendors\datatables.net-fixedheader\bower.json" />
+    <Content Include="Scripts\vendors\datatables.net-fixedheader\Readme.md" />
+    <Content Include="Scripts\vendors\datatables.net-fixedheader-bs\.bower.json" />
+    <Content Include="Scripts\vendors\datatables.net-fixedheader-bs\bower.json" />
+    <Content Include="Scripts\vendors\datatables.net-fixedheader-bs\Readme.md" />
+    <Content Include="Scripts\vendors\datatables.net-keytable\.bower.json" />
+    <Content Include="Scripts\vendors\datatables.net-keytable\bower.json" />
+    <Content Include="Scripts\vendors\datatables.net-keytable\Readme.md" />
+    <Content Include="Scripts\vendors\datatables.net-responsive\.bower.json" />
+    <Content Include="Scripts\vendors\datatables.net-responsive\bower.json" />
+    <Content Include="Scripts\vendors\datatables.net-responsive\Readme.md" />
+    <Content Include="Scripts\vendors\datatables.net-responsive-bs\.bower.json" />
+    <Content Include="Scripts\vendors\datatables.net-responsive-bs\bower.json" />
+    <Content Include="Scripts\vendors\datatables.net-responsive-bs\Readme.md" />
+    <Content Include="Scripts\vendors\datatables.net-scroller\.bower.json" />
+    <Content Include="Scripts\vendors\datatables.net-scroller\bower.json" />
+    <Content Include="Scripts\vendors\datatables.net-scroller\Readme.md" />
+    <Content Include="Scripts\vendors\datatables.net-scroller-bs\.bower.json" />
+    <Content Include="Scripts\vendors\datatables.net-scroller-bs\bower.json" />
+    <Content Include="Scripts\vendors\datatables.net-scroller-bs\Readme.md" />
+    <Content Include="Scripts\vendors\font-awesome\.bower.json" />
+    <Content Include="Scripts\vendors\font-awesome\.npmignore" />
+    <Content Include="Scripts\vendors\font-awesome\bower.json" />
+    <Content Include="Scripts\vendors\font-awesome\css\font-awesome.css.map" />
+    <Content Include="Scripts\vendors\font-awesome\fonts\fontawesome-webfont.eot" />
+    <Content Include="Scripts\vendors\font-awesome\fonts\fontawesome-webfont.ttf" />
+    <Content Include="Scripts\vendors\font-awesome\fonts\fontawesome-webfont.woff" />
+    <Content Include="Scripts\vendors\font-awesome\fonts\fontawesome-webfont.woff2" />
+    <Content Include="Scripts\vendors\font-awesome\fonts\FontAwesome.otf" />
+    <Content Include="Scripts\vendors\font-awesome\less\animated.less" />
+    <Content Include="Scripts\vendors\font-awesome\less\bordered-pulled.less" />
+    <Content Include="Scripts\vendors\font-awesome\less\core.less" />
+    <Content Include="Scripts\vendors\font-awesome\less\fixed-width.less" />
+    <Content Include="Scripts\vendors\font-awesome\less\font-awesome.less" />
+    <Content Include="Scripts\vendors\font-awesome\less\icons.less" />
+    <Content Include="Scripts\vendors\font-awesome\less\larger.less" />
+    <Content Include="Scripts\vendors\font-awesome\less\list.less" />
+    <Content Include="Scripts\vendors\font-awesome\less\mixins.less" />
+    <Content Include="Scripts\vendors\font-awesome\less\path.less" />
+    <Content Include="Scripts\vendors\font-awesome\less\rotated-flipped.less" />
+    <Content Include="Scripts\vendors\font-awesome\less\screen-reader.less" />
+    <Content Include="Scripts\vendors\font-awesome\less\stacked.less" />
+    <Content Include="Scripts\vendors\font-awesome\less\variables.less" />
+    <Content Include="Scripts\vendors\font-awesome\scss\_animated.scss" />
+    <Content Include="Scripts\vendors\font-awesome\scss\_bordered-pulled.scss" />
+    <Content Include="Scripts\vendors\font-awesome\scss\_core.scss" />
+    <Content Include="Scripts\vendors\font-awesome\scss\_fixed-width.scss" />
+    <Content Include="Scripts\vendors\font-awesome\scss\_icons.scss" />
+    <Content Include="Scripts\vendors\font-awesome\scss\_larger.scss" />
+    <Content Include="Scripts\vendors\font-awesome\scss\_list.scss" />
+    <Content Include="Scripts\vendors\font-awesome\scss\_mixins.scss" />
+    <Content Include="Scripts\vendors\font-awesome\scss\_path.scss" />
+    <Content Include="Scripts\vendors\font-awesome\scss\_rotated-flipped.scss" />
+    <Content Include="Scripts\vendors\font-awesome\scss\_screen-reader.scss" />
+    <Content Include="Scripts\vendors\font-awesome\scss\_stacked.scss" />
+    <Content Include="Scripts\vendors\font-awesome\scss\_variables.scss" />
+    <Content Include="Scripts\vendors\font-awesome\scss\font-awesome.scss" />
+    <Content Include="Scripts\vendors\jquery\.bower.json" />
+    <Content Include="Scripts\vendors\jquery\bower.json" />
+    <Content Include="Scripts\vendors\jquery\dist\jquery.min.map" />
+    <Content Include="Scripts\vendors\jquery\external\sizzle\dist\sizzle.min.map" />
+    <Content Include="Scripts\vendors\jquery\README.md" />
+    <Content Include="Scripts\vendors\jquery\src\.jshintrc" />
+    <Content Include="Scripts\vendors\jquery.inputmask\.bower.json" />
+    <Content Include="Scripts\vendors\jquery.inputmask\bower.json" />
+    <Content Include="Scripts\vendors\morris.js\.bower.json" />
+    <Content Include="Scripts\vendors\morris.js\.travis.yml" />
+    <Content Include="Scripts\vendors\morris.js\bower.json" />
+    <Content Include="Scripts\vendors\morris.js\bower.travis.json" />
+    <Content Include="Scripts\vendors\morris.js\less\morris.core.less" />
+    <Content Include="Scripts\vendors\morris.js\lib\morris.area.coffee" />
+    <Content Include="Scripts\vendors\morris.js\lib\morris.bar.coffee" />
+    <Content Include="Scripts\vendors\morris.js\lib\morris.coffee" />
+    <Content Include="Scripts\vendors\morris.js\lib\morris.donut.coffee" />
+    <Content Include="Scripts\vendors\morris.js\lib\morris.grid.coffee" />
+    <Content Include="Scripts\vendors\morris.js\lib\morris.hover.coffee" />
+    <Content Include="Scripts\vendors\morris.js\lib\morris.line.coffee" />
+    <Content Include="Scripts\vendors\morris.js\package.json" />
+    <Content Include="Scripts\vendors\morris.js\README.md" />
+    <Content Include="Scripts\vendors\morris.js\spec\lib\area\area_spec.coffee" />
+    <Content Include="Scripts\vendors\morris.js\spec\lib\bar\bar_spec.coffee" />
+    <Content Include="Scripts\vendors\morris.js\spec\lib\bar\colours.coffee" />
+    <Content Include="Scripts\vendors\morris.js\spec\lib\commas_spec.coffee" />
+    <Content Include="Scripts\vendors\morris.js\spec\lib\donut\donut_spec.coffee" />
+    <Content Include="Scripts\vendors\morris.js\spec\lib\grid\auto_grid_lines_spec.coffee" />
+    <Content Include="Scripts\vendors\morris.js\spec\lib\grid\set_data_spec.coffee" />
+    <Content Include="Scripts\vendors\morris.js\spec\lib\grid\y_label_format_spec.coffee" />
+    <Content Include="Scripts\vendors\morris.js\spec\lib\hover_spec.coffee" />
+    <Content Include="Scripts\vendors\morris.js\spec\lib\label_series_spec.coffee" />
+    <Content Include="Scripts\vendors\morris.js\spec\lib\line\line_spec.coffee" />
+    <Content Include="Scripts\vendors\morris.js\spec\lib\pad_spec.coffee" />
+    <Content Include="Scripts\vendors\morris.js\spec\lib\parse_time_spec.coffee" />
+    <Content Include="Scripts\vendors\morris.js\spec\support\placeholder.coffee" />
+    <Content Include="Scripts\vendors\morris.js\spec\viz\run.sh" />
+    <Content Include="Scripts\vendors\raphael\.bower.json" />
+    <Content Include="Scripts\vendors\raphael\bower.json" />
+    <Content Include="Scripts\vendors\validator\.bower.json" />
+    <Content Include="Scripts\vendors\validator\package.json" />
+    <Content Include="Scripts\vendors\validator\README.md" />
+    <Content Include="Views\Shared\_UserLayout.cshtml" />
+    <Content Include="Views\login\AdminDashBoard.cshtml" />
+    <Content Include="Views\Patients\Index.cshtml" />
+    <Content Include="Views\Patients\Create.cshtml" />
+    <Content Include="Views\Patients\Edit.cshtml" />
+    <Content Include="Views\User\Index.cshtml" />
+    <Content Include="Views\User\Create.cshtml" />
+    <Content Include="Views\User\Edit.cshtml" />
+    <Content Include="Views\User\Details.cshtml" />
+    <Content Include="Views\User\Delete.cshtml" />
+    <Content Include="Views\Medicine\Index.cshtml" />
+    <Content Include="Views\Medicine\Create.cshtml" />
+    <Content Include="Views\Medicine\Edit.cshtml" />
+    <Content Include="Views\Medicine\Details.cshtml" />
+    <Content Include="Views\Patients\AdminIndex.cshtml" />
+    <Content Include="Views\Patients\AdminCreate.cshtml" />
+    <Content Include="Views\Patients\AdminEdit.cshtml" />
+    <Content Include="Views\Medicine\Delete.cshtml" />
+    <Content Include="Views\Patients\Delete.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="App_Data\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="fonts\glyphicons-halflings-regular.woff2" />
+    <Content Include="fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="Content\bootstrap.min.css.map" />
+    <Content Include="Content\bootstrap.css.map" />
+    <Content Include="Content\bootstrap-theme.min.css.map" />
+    <Content Include="Content\bootstrap-theme.css.map" />
+    <None Include="packages.config" />
+    <Content Include="Scripts\jquery-3.4.1.slim.min.map" />
+    <Content Include="Scripts\jquery-3.4.1.min.map" />
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <Target Name="MvcBuildViews" AfterTargets="AfterBuild" Condition="'$(MvcBuildViews)'=='true'">
+    <AspNetCompiler VirtualPath="temp" PhysicalPath="$(WebProjectOutputDir)" />
+  </Target>
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>57750</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>https://localhost:44321/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', 'packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
+  </Target>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target> -->
+</Project>

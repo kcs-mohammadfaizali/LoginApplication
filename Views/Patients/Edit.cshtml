@@ -1,0 +1,147 @@
+﻿
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Views/Shared/_UserLayout.cshtml";
+}
+
+<h2>Edit</h2>
+<!-- page content -->
+<div class="right_col" role="main">
+    <div class="">
+        <div class="page-title">
+            <div class="title_left">
+                <h3><i class="fa fa-user-plus"></i> Edit Patient</h3>
+            </div>
+        </div>
+
+        <div class="clearfix"></div>
+
+        <div class="row">
+            <div class="col-md-12 col-sm-12  ">
+                <div class="x_panel">
+                    <div class="x_title">
+                        <h2>Patient Information</h2>
+                        <div class="clearfix"></div>
+                    </div>
+                    <div class="x_content">
+                        <form id="patient_edit" data-parsley-validate class="form-horizontal form-label-left">
+
+                            <div class="item form-group">
+                                <div class="col-md-8 col-sm-8 offset-md-2">
+                                    <label><i class="fa fa-user"></i> Basic Information</label>
+                                </div>
+                            </div>
+                            <div>
+                                <input type="hidden" id="patient_id" class="form-control has-feedback-left">
+                            </div>
+                            <div>
+                                <input type="hidden" id="user_id" class="form-control has-feedback-left">
+                            </div>
+                            <div class="item form-group">
+                                <div class="col-md-8 col-sm-8 offset-md-2">
+                                    <input type="text" id="P_First_name" class="form-control has-feedback-left" placeholder="First Name">
+                                    <span class="fa fa-user form-control-feedback left" aria-hidden="true"></span>
+                                </div>
+                            </div>
+                            <div class="item form-group">
+                                <div class="col-md-8 col-sm-8 offset-md-2">
+                                    <input type="text" id="P_Last_name" class="form-control has-feedback-left" placeholder="Last Name">
+                                    <span class="fa fa-user form-control-feedback left" aria-hidden="true"></span>
+                                </div>
+                            </div>
+                            <div class="item form-group">
+                                <div class="col-md-8 col-sm-8 offset-md-2">
+                                    <input type="text" id="Medical_condition" class="form-control has-feedback-left" placeholder="Medical condition">
+                                    <span class="fa fa-heartbeat form-control-feedback left" aria-hidden="true"></span>
+                                </div>
+                            </div>
+                            <div class="item form-group">
+                                <div class="col-md-8 col-sm-8 offset-md-2">
+                                    <input type="text" id="IsFollowUp" class="form-control has-feedback-left" placeholder="Is Follow Up(true/false)">
+                                    <span class="fa fa-arrow-up form-control-feedback left" aria-hidden="true"></span>
+                                </div>
+                            </div>
+
+                            <div class="item form-group">
+                                <div class="col-md-8 col-sm-8 offset-md-2">
+                                    <label><i class="fa fa-home"></i> Contact Information</label>
+                                </div>
+                            </div>
+                            <div class="item form-group">
+                                <div class="col-md-8 col-sm-8 offset-md-2">
+                                    <input id="P_Phone" type="tel" class="form-control has-feedback-left" placeholder="ex. 09809879797">
+                                    <span class="fa fa-phone form-control-feedback left" aria-hidden="true"></span>
+                                </div>
+                            </div>
+                            <div class="item form-group">
+                                <div class="col-md-8 col-sm-8 offset-md-2">
+                                    <input id="P_Email" type="email" class="form-control has-feedback-left" placeholder="ex. patient@gmail.com">
+                                    <span class="fa fa-envelope form-control-feedback left" aria-hidden="true"></span>
+                                </div>
+                            </div>
+                            <div class="item form-group">
+                                <div class="col-md-8 col-sm-8 offset-md-2">
+                                    <input type="text" id="P_Address" class="form-control has-feedback-left" placeholder="First Name">
+                                    <span class="fa fa-home form-control-feedback left" aria-hidden="true"></span>
+                                </div>
+                            </div>
+                            <div class="item form-group">
+                                <div class="col-md-8 col-sm-8 offset-md-2">
+                                    <button id="btnCancel" class="btn btn-primary" type="button">Cancel</button>
+                                    <input id="btnEdit" type="button" class="btn btn-success" value="Submit" />
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+@section scripts{
+    <script>
+        @*
+        $(function () {
+        use this part for loading at particular section in a page
+        });*@
+            $(document).ready(function () {
+
+        @*
+                use this part for loading entire page
+                *@
+                var f = @Html.Raw(ViewBag.Patients);
+
+                $("#P_First_name").val(f.P_First_name);
+                $("#P_Last_name").val(f.P_Last_name);
+                $("#P_Phone").val(f.P_Phone);
+                $("#P_Email").val(f.P_Email);
+                $("#P_Address").val(f.P_Address);
+                $("#Medical_condition").val(f.Medical_condition);
+                $("#IsFollowUp").val(f.IsFollowUp);
+                $("#patient_id").val(f.patient_id);
+                $("#user_id").val(f.user_id);
+            });
+        $('#btnCancel').click(function () {
+            window.location.href = "/Patients/Index"
+        });
+        $('#btnEdit').click(function () {
+            var data = {
+                patient_id: $("#patient_id").val(),
+                P_First_name: $('#P_First_name').val(),
+                P_Last_name: $('#P_Last_name').val(),
+                P_Phone: $('#P_Phone').val(),
+                P_Email: $('#P_Email').val(),
+                P_Address: $('#P_Address').val(),
+                Medical_condition: $('#Medical_condition').val(),
+                IsFollowUp: $('#IsFollowUp').val(),
+                user_id: $('#user_id').val(),
+            };
+            $.post("/Patients/Edit", { patients: data }, function () {
+                window.location.href = "/Patients/Index"
+            });
+        });
+    </script>
+}
+
+
+

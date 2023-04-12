@@ -1,0 +1,92 @@
+﻿@model LoginApplication.Models.Users
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Users</h4>
+    <hr />
+
+    <div class="right_col" role="main">
+        <div class="">
+            <div class="page-title">
+                <div class="title_left">
+                    <h3><i class="fa fa-user-plus"></i> User</h3>
+                </div>
+            </div>
+            <div class="clearfix"></div>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="card">
+                        <div class="card-header">
+                            <div class="card-title">User Details</div>
+                        </div>
+                        <div class="card-body">
+
+                            <dl class="dl-horizontal">
+                                <dt>
+                                    @Html.DisplayNameFor(model => model.First_name)
+                                </dt>
+
+                                <dd>
+                                    @Html.DisplayFor(model => model.First_name)
+                                </dd>
+
+                                <dt>
+                                    @Html.DisplayNameFor(model => model.Last_name)
+                                </dt>
+
+                                <dd>
+                                    @Html.DisplayFor(model => model.Last_name)
+                                </dd>
+
+                                <dt>
+                                    @Html.DisplayNameFor(model => model.Email)
+                                </dt>
+
+                                <dd>
+                                    @Html.DisplayFor(model => model.Email)
+                                </dd>
+
+                                <dt>
+                                    @Html.DisplayNameFor(model => model.Password)
+                                </dt>
+
+                                <dd>
+                                    @Html.DisplayFor(model => model.Password)
+                                </dd>
+
+                                <dt>
+                                    @Html.DisplayNameFor(model => model.Role)
+                                </dt>
+
+                                <dd>
+                                    @Html.DisplayFor(model => model.Role)
+                                </dd>
+
+                                <dt>
+                                    @Html.DisplayNameFor(model => model.IsActive)
+                                </dt>
+
+                                <dd>
+                                    @Html.DisplayFor(model => model.IsActive)
+                                </dd>
+
+                            </dl>
+                        </div>
+                        <p>
+                            @Html.ActionLink("Edit", "Edit", new { id = Model.user_id }) |
+                            @Html.ActionLink("Back to List", "Index")
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+</div>
