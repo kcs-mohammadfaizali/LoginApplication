@@ -1,0 +1,79 @@
+﻿
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_UserLayout.cshtml";
+}
+
+<div class="right_col" role="main">
+    <div class="">
+        <div class="page-title">
+            <div class="title_left">
+                <h3><i class="fa fa-user-plus"></i> Add Prescription</h3>
+            </div>
+        </div>
+        <div class="clearfix"></div>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-header">
+                        <div class="card-title">Prescription Details</div>
+                    </div>
+                    <div class="card-body">
+                        <form id="AddPrescription" data-parsley-validate class="form-horizontal form-label-left">
+                            <div class="form-group">
+                                <label for="patientDropdown">Choose Patient</label>
+                                <select class="form-control" id="patientDropdown" name="patientDropdown">
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-md-offset-2 col-md-10">
+                                    <input id="btnCreate" type="button" value="Create" class="btn btn-success" />
+                                </div>
+                            </div>
+                        </form>
+                        <div class="card-action">
+
+                            @Html.ActionLink("Back to List", "Index")
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+@section scripts{
+    
+    <script>
+        debugger;
+        $(document).ready(function () {
+            $.ajax({
+                url: "/Prescription/getPatient",
+                type: "GET",
+                contentType: "application/json;charset=utf-8",
+                dataType: "json",
+                success: function (result) {
+                    var html = '<option  value = "Select" disabled selected > Select </option>';
+                    $.each(result, function (key, item) {
+                        html += '<option value=' +item.patient_id + '>' + item.P_First_name + '</option>';
+                       // html += '<option>' + item.patient_id + '</option>';
+                        
+                    });
+                    $('#patientDropdown').html(html);
+                },
+                error: function (errormessage) {
+                    alert(errormessage.responseText);
+                }
+            });
+        });
+        $('#btnCreate').click(function () {
+            var data = {
+                patient_id: $("#patientDropdown option:selected").val(),
+
+            };
+            $.post("/Prescription/Create", { prescription : data }, function () { window.location.href = "/Prescription/Index" });
+        });
+       
+    </script>
+}
+
+

@@ -24,18 +24,21 @@
                     <div class="row">
 
                         <div class="col-md-12 col-sm-12">
-                            <input type="text" id="Medicine_name" class="form-control has-feedback-left" placeholder="Medicine Name">
+                            <input type="text" id="Medicine_name" name="Medicine_name" class="form-control has-feedback-left" placeholder="Medicine Name">
                             <span class="fa fa-medkit form-control-feedback left" aria-hidden="true"></span>
+                            <span class="Medicine_name-error"></span>
                         </div><br><br><br>
 
                         <div class="col-md-12 col-sm-12">
-                            <input type="text" id="Price" class="form-control has-feedback-left" placeholder="Price">
+                            <input type="text" id="Price" name="Price" class="form-control has-feedback-left" placeholder="Price">
                             <span class="fa fa-dollar form-control-feedback left" aria-hidden="true"></span>
+                            <span class="Price-error"></span>
                         </div> <br><br><br>
 
                         <div class="col-md-12 col-sm-12">
-                            <input type="text" id="Total_stock" class="form-control has-feedback-left" placeholder="Total Stock">
+                            <input type="text" id="Total_stock" name="Total_stock" class="form-control has-feedback-left" placeholder="Total Stock">
                             <span class="fa fa-hourglass-o form-control-feedback left" aria-hidden="true"></span>
+                            <span class="Total_stock-error"></span>
                         </div> <br><br><br>
 
                         <div class="col-md-12 col-sm-12">
@@ -49,22 +52,90 @@
     </div>
 </div>
 @section scripts{
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.1/jquery.validate.min.js"></script>
     <script>
+        //debugger;
         $(document).ready(function () {
             $('#btnCancel').click(function () {
                 window.location.href = "/Medicine/Index"
             });
+            $("#AddMedicine").validate({
+                errorClass: "error fail-alert",
+                validClass: "valid success-alert",
+                rules: {
+                    Medicine_name: {
+                        required: true,
+
+
+                    },
+                    Price: {
+                        required: true,
+                        digits: true
+
+                    },
+                    Total_stock: {
+                        required: true,
+                        digits: true
+
+                    }
+                },
+                messages: {
+                    Medicine_name: {
+                        required: "Enter Medicine Name",
+
+                    },
+                    Price: {
+                        required: "Enter Price",
+
+                    },
+                    Total_stock: {
+                        required: "Enter Quantity",
+
+                    }
+
+                },
+                errorPlacement: function (error, element) {
+                    var type = $(element).attr("name");
+                    console.log(type);
+
+                    if (type === "Medicine_name") {
+                        $(".Medicine_name-error").append(error);
+                    }
+                    else if (type === "Price") {
+                        $(".Price-error").append(error);
+                    }
+                    else if (type === "Total_stock") {
+                        $(".Total_stock-error").append(error);
+                    }
+
+                },
+
+            });
             $('#btnCreate').click(function () {
-                var data = {
-                    Medicine_name: $("#Medicine_name").val(),
-                    Price: $('#Price').val(),
-                    Total_stock: $('#Total_stock').val(),
-                    
-                };
-                $.post("/Medicine/Create", { medicine: data }, function () { window.location.href = "/Medicine/Index" });
+                var r = $('#AddMedicine').valid();
+                console.log(r);
+                if ($('#AddMedicine').valid()) {
+                    var data = {
+                        Medicine_name: $("#Medicine_name").val(),
+                        Price: $('#Price').val(),
+                        Total_stock: $('#Total_stock').val(),
+
+                    };
+                    //$.post("/Medicine/Create", { medicine: data }, function () { window.location.href = "/Medicine/Index" });
+                    $.post("/Medicine/Create", { medicine: data },
+                        function (response) {
+                            console.log(response);
+                            if (response.status) {
+                                console.log(response.status);
+                                window.location.href = "/Medicine/Index";
+                            }
+                            else {
+                                alert(response.message);
+                            }
+                        });
+                }/**/
             });
         });
-
     </script>
 }
 

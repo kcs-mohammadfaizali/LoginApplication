@@ -13,6 +13,7 @@ namespace LoginApplication.Models
         [Key]
         public int patient_id { get; set; }
         public int user_id { get; set; }
+
         [Required]
         [StringLength(100)]
         [Display(Name ="First Name")]

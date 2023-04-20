@@ -81,6 +81,7 @@ namespace LoginApplication.Controllers
         {
             if (Session["userid"] != null && Session["Role"].ToString() == "Admin")
             {
+                ViewBag.createError = "Data Subitted";
                 return View();
             }
             else
@@ -94,7 +95,7 @@ namespace LoginApplication.Controllers
         [HttpPost]
         public ActionResult Create(Patients patients)
         {
-            ViewBag.createError ="Create started";
+            
             try
             {
 
@@ -111,13 +112,14 @@ namespace LoginApplication.Controllers
                 DBHandler dbHandler = new DBHandler();
                 var result = dbHandler.DMLOperation(com);
                 ViewBag.createError = result.ToString();
+                //return RedirectToAction("Error");
                 return RedirectToAction("Index");
             }
             catch (Exception ex)
             {
                 var errormessage = ex.Message;
                 ViewBag.createError = errormessage.ToString();
-                return RedirectToAction("Error", errormessage);
+                return RedirectToAction("Error");
             }
         }
 

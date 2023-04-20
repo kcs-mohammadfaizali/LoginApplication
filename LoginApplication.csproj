@@ -148,17 +148,22 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
-    <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\MedicineController.cs" />
     <Compile Include="Controllers\PatientsController.cs" />
+    <Compile Include="Controllers\PrescriptionController.cs" />
+    <Compile Include="Controllers\ProfileController.cs" />
+    <Compile Include="Controllers\SalesController.cs" />
     <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\MedicineSales.cs" />
     <Compile Include="Models\DBHandler.cs" />
     <Compile Include="Models\Medicine.cs" />
     <Compile Include="Models\Patients.cs" />
+    <Compile Include="Models\PatientsDB.cs" />
+    <Compile Include="Models\Prescription.cs" />
     <Compile Include="Models\Users.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -908,9 +913,6 @@
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="Views\Home\About.cshtml" />
-    <Content Include="Views\Home\Contact.cshtml" />
-    <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Shared\_LoginLayout.cshtml" />
     <Content Include="Views\login\Index.cshtml" />
     <Content Include="Views\login\UserDashBoard.cshtml" />
@@ -1049,13 +1051,22 @@
     <Content Include="Views\User\Delete.cshtml" />
     <Content Include="Views\Medicine\Index.cshtml" />
     <Content Include="Views\Medicine\Create.cshtml" />
-    <Content Include="Views\Medicine\Edit.cshtml" />
     <Content Include="Views\Medicine\Details.cshtml" />
     <Content Include="Views\Patients\AdminIndex.cshtml" />
     <Content Include="Views\Patients\AdminCreate.cshtml" />
     <Content Include="Views\Patients\AdminEdit.cshtml" />
     <Content Include="Views\Medicine\Delete.cshtml" />
     <Content Include="Views\Patients\Delete.cshtml" />
+    <Content Include="Views\Shared\UserError.cshtml" />
+    <Content Include="Views\Prescription\Index.cshtml" />
+    <Content Include="Views\Prescription\Details.cshtml" />
+    <Content Include="Views\Prescription\Create.cshtml" />
+    <Content Include="Views\Prescription\Edit.cshtml" />
+    <Content Include="Views\Sales\Index.cshtml" />
+    <Content Include="Views\Profile\Index.cshtml" />
+    <Content Include="Views\Profile\AdminIndex.cshtml" />
+    <Content Include="Views\Sales\Order.cshtml" />
+    <Content Include="Views\Medicine\Edit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

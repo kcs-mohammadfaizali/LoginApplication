@@ -26,9 +26,10 @@ namespace LoginApplication.Controllers
         }
         public JsonResult AjaxMethod()
         {
-
+            SqlCommand com = new SqlCommand("[sp_user_select]");
+            com.CommandType = CommandType.StoredProcedure;
             DBHandler dbHandle = new DBHandler();
-            var UserList = dbHandle.ConvertDataTable<Users>(dbHandle.GetAll("sp_user_select").Tables[0]);
+            var UserList = dbHandle.ConvertDataTable<Users>(dbHandle.GetsAll(com).Tables[0]);
             return Json(UserList);
         }
 

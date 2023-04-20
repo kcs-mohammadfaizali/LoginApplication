@@ -103,7 +103,7 @@
                 window.location.href = "/Patients/AdminIndex"
             });
             $('#btnCreate').click(function () {
-                debugger;
+               // debugger;
                 var data = {
                     patient_id: $("#patient_id").val(),
                     P_First_name: $('#P_First_name').val(),
@@ -115,8 +115,11 @@
                     IsFollowUp: $('#IsFollowUp').is(':checked'),
                     user_id: $('#user_id').val(),
                 };
-                alert(@ViewBag.createError);
-                $.post("/Patients/Create", { patients: data }, function () { window.location.href = "/Patients/AdminIndex" });
+               // alert(@ViewBag.createError);
+                $.post("/Patients/Create", { patients: data }, function ()
+                {
+                    window.location.href = "/Patients/AdminIndex"
+                });
             });
         });
 
