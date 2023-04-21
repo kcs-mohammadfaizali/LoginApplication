@@ -21,6 +21,7 @@
                     </div>
                     <div class="card-body">
                         <form id="AddPrescription" data-parsley-validate class="form-horizontal form-label-left">
+                            <input  type="hidden" id="Prescription_id" class="form-control">
                             <div class="form-group">
                                 <label for="patientDropdown">Choose Patient</label>
                                 <select class="form-control" id="patientDropdown" name="patientDropdown">
@@ -43,10 +44,11 @@
     </div>
 </div>
 @section scripts{
-
+    @*<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.1/jquery.validate.min.js"></script>*@
     <script>
         $(document).ready(function () {
             var f = @Html.Raw(ViewBag.Prescription);
+            $('#Prescription_id').val(f.Prescription_id);
             console.log(f);
             $.ajax({
                 url: "/Prescription/getPatient",
@@ -75,13 +77,62 @@
             //$("#patientDropdown option:selected").text(f.patient_id);
             //$("#patientDropdown option:selected").val(f.patient_id);
         });
-        $('#btnEdit').click(function () {
-            var data = {
-                patient_id: $("#patientDropdown option:selected").val(),
+        $("#AddPrescription").validate({
+            errorClass: "error fail-alert",
+            validClass: "valid success-alert",
+            rules: {
+                patientDropdown: {
+                    required: true,
 
-            };
-            $.post("/Prescription/Edit ", { prescription : data }, function () { window.location.href = "/Prescription/Index" });
+
+                },
+
+            },
+            messages: {
+                patientDropdown: {
+                    required: "select patient name",
+
+                },
+
+
+            },
+            errorPlacement: function (error, element) {
+                var type = $(element).attr("name");
+                console.log(type);
+
+                if (type === "patientDropdown") {
+                    $(".patientDropdown-error").append(error);
+                }
+
+
+            },
+
         });
+        $('#btnEdit').click(function () {
+            var r = $('#AddPrescription').valid();
+            console.log(r);
+            if ($('#AddPrescription').valid()) {
+                var data = {
+                    patient_id: $("#patientDropdown option:selected").val(),
+                    Prescription_id:$('#Prescription_id').val()
+
+
+                };
+                //$.post("/Medicine/Create", { medicine: data }, function () { window.location.href = "/Medicine/Index" });
+                $.post("/Prescription/Edit", { prescription: data },
+                    function (response) {
+                        console.log(response);
+                        if (response.status) {
+                            console.log(response.status);
+                            window.location.href = "/Prescription/Index";
+                        }
+                        else {
+                            alert(response.message);
+                        }
+                    });
+            }/**/
+        });
+
 
     </script>
 }

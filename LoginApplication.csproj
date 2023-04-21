@@ -153,6 +153,7 @@
     <Compile Include="Controllers\PatientsController.cs" />
     <Compile Include="Controllers\PrescriptionController.cs" />
     <Compile Include="Controllers\ProfileController.cs" />
+    <Compile Include="Controllers\ReportController.cs" />
     <Compile Include="Controllers\SalesController.cs" />
     <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Global.asax.cs">
@@ -164,6 +165,7 @@
     <Compile Include="Models\Patients.cs" />
     <Compile Include="Models\PatientsDB.cs" />
     <Compile Include="Models\Prescription.cs" />
+    <Compile Include="Models\Report.cs" />
     <Compile Include="Models\Users.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -1067,6 +1069,7 @@
     <Content Include="Views\Profile\AdminIndex.cshtml" />
     <Content Include="Views\Sales\Order.cshtml" />
     <Content Include="Views\Medicine\Edit.cshtml" />
+    <Content Include="Views\Report\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

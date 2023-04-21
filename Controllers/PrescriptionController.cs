@@ -69,6 +69,8 @@ namespace LoginApplication.Controllers
         [HttpPost]
         public ActionResult Create(Prescription prescription)
         {
+            bool status = false;
+            string message = "";
             try
             {
                 SqlCommand com = new SqlCommand("[sp_prescription_insert]");
@@ -78,12 +80,14 @@ namespace LoginApplication.Controllers
                 DBHandler dbHandler = new DBHandler();
                 var result = dbHandler.DMLOperation(com);
                 ViewBag.createError = result.ToString();
-                return RedirectToAction("Index");
+                status = true;
+
             }
-            catch
+            catch (Exception ex)
             {
-                return View();
+                message = ex.Message;
             }
+            return Json(new { status = status, message = message });
         }
 
         // GET: Prescription/Edit/5
@@ -111,6 +115,8 @@ namespace LoginApplication.Controllers
         [HttpPost]
         public ActionResult Edit(Prescription prescription)
         {
+            bool status = false;
+            string message = "";
             try
             {
                 SqlCommand com = new SqlCommand("sp_prescription_update");
@@ -120,12 +126,15 @@ namespace LoginApplication.Controllers
                 
                 DBHandler dBHandler = new DBHandler();
                 var result = dBHandler.DMLOperation(com);
-                return RedirectToAction(nameof(Index));
+                status = true;
+
+
             }
-            catch
+            catch (Exception ex)
             {
-                return View();
+                message = ex.Message;
             }
+            return Json(new { status = status, message = message });
         }
 
     }

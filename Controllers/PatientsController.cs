@@ -95,7 +95,9 @@ namespace LoginApplication.Controllers
         [HttpPost]
         public ActionResult Create(Patients patients)
         {
-            
+            bool status = false;
+            string message = "";
+
             try
             {
 
@@ -113,14 +115,16 @@ namespace LoginApplication.Controllers
                 var result = dbHandler.DMLOperation(com);
                 ViewBag.createError = result.ToString();
                 //return RedirectToAction("Error");
-                return RedirectToAction("Index");
+                status = true;
             }
             catch (Exception ex)
             {
                 var errormessage = ex.Message;
                 ViewBag.createError = errormessage.ToString();
-                return RedirectToAction("Error");
+                message=ex.Message;
             }
+            return Json(new { status = status, message = message });
+
         }
 
         // GET: Patients/Edit/5
@@ -191,6 +195,8 @@ namespace LoginApplication.Controllers
         [HttpPost]
         public ActionResult Edit(Patients patients)
         {
+            bool status = false;
+            string message = "";
             try
             {
                 SqlCommand com = new SqlCommand("sp_patient_update");
@@ -205,12 +211,13 @@ namespace LoginApplication.Controllers
                 com.Parameters.AddWithValue("@IsFollowUp", patients.IsFollowUp);
                 DBHandler dBHandler = new DBHandler();
                 var result = dBHandler.DMLOperation(com);
-                return RedirectToAction(nameof(Index));
+                status = true;
             }
             catch
             {
                 return View();
             }
+            return Json(new { status = status, message = message });
         }
 
         // GET: Patients/Delete/5

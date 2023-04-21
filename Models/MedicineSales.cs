@@ -17,5 +17,6 @@ namespace LoginApplication.Models
         public int quantity { get; set; }
         public decimal price { get; set; }
         public decimal totalprice { get; set; }
+
     }
 }

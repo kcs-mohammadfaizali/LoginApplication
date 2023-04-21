@@ -18,5 +18,6 @@ namespace LoginApplication.Models
         public DateTime Date { get; set; }
         public string name { get; set; }
         public int user_id { get; set; }
+
     }
 }
