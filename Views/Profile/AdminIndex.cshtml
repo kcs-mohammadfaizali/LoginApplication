@@ -1,0 +1,141 @@
+﻿
+@{
+    ViewBag.Title = "AdminIndex";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="right_col" role="main">
+    <div class="">
+        <div class="page-title">
+            <div class="title_left">
+                <h3><i class="fa fa-user"></i> Profile</h3>
+            </div>
+        </div>
+
+        <div class="clearfix"></div>
+
+        <div class="row">
+            <div class="col-md-12 col-sm-12  ">
+                <div class="x_panel">
+                    <div class="x_title">
+                        <h2>Profile Information</h2>
+                        <div class="clearfix"></div>
+                    </div>
+                    <div class="x_content">
+                        <div class="col-md-3 col-sm-3  profile_left">
+                            <div class="profile_img">
+                                <div id="crop-avatar">
+                                    <!-- Current avatar -->
+                                    <img class="img-responsive avatar-view" src="~/Contents/cashier/images/picture.jpg" alt="Avatar" style="border-radius:10px">
+                                </div>
+                            </div>
+                            <h3 id="txtUserFullName">Anne Smith</h3>
+
+                            <ul class="list-unstyled user_data">
+                                <li>
+                                    <i class="fa fa-map-marker user-profile-icon"></i> San Francisco, California, USA
+                                </li>
+
+                                <li>
+                                    <i class="fa fa-user user-profile-icon"></i> <span id="txtUserRole">Cashier</span>
+                                </li>
+
+                                <li class="m-top-xs">
+                                    <i class="fa fa-external-link user-profile-icon"></i>
+                                    <a href="#" target="_blank">www.facebook.com</a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="col-md-9 col-sm-9  profile_left">
+                            <form id="profileDetails" data-parsley-validate class="form-horizontal form-label-left">
+
+                                <div class="item form-group">
+                                    <label class="col-form-label col-md-3 col-sm-3 label-align"><strong><i class="fa fa-user"></i> Profile Information</strong></label>
+                                </div>
+                                <div class="item form-group">
+                                    <label class="col-form-label col-md-3 col-sm-3 label-align">
+                                        Full Name <span class="required">*</span>
+                                    </label>
+                                    <div class="col-md-4 col-sm-4 ">
+                                        <input disabled id="First_name" type="text" required="required" class="form-control" placeholder="First Name">
+                                    </div>
+                                    <div class="col-md-4 col-sm-4 ">
+                                        <input disabled id="Last_name" type="text" required="required" class="form-control" placeholder="Last Name">
+                                    </div>
+                                </div>
+                                <div class="item form-group">
+                                    <label class="col-form-label col-md-3 col-sm-3 label-align">Email</label>
+                                    <div class="col-md-8 col-sm-8 ">
+                                        <input disabled id="Email" class="form-control" type="text" placeholder="support@gmail.com">
+                                    </div>
+                                </div>
+                                <div class="item form-group">
+                                    <label class="col-form-label col-md-3 col-sm-3 label-align"><strong><i class="fa fa-key"></i> Account Information</strong></label>
+                                </div>
+
+                                <div class="item form-group">
+                                    <label class="col-form-label col-md-3 col-sm-3 label-align">Username</label>
+                                    <div class="col-md-8 col-sm-8 ">
+                                        <input disabled id="Username" class="form-control" type="text" placeholder="Username">
+                                    </div>
+                                </div>
+                                <div class="item form-group">
+                                    <label class="col-form-label col-md-3 col-sm-3 label-align">Password</label>
+                                    <div class="col-md-8 col-sm-8 ">
+                                        <input disabled id="Password" class="form-control" type="password" placeholder="************">
+                                    </div>
+                                </div>
+                                <div class="ln_solid"></div>
+                                <div class="item form-group">
+                                    <div class="col-md-6 col-sm-6 offset-md-3">
+                                        @*<button class="btn btn-primary" type="button">Cancel</button>
+                                            <button id="submit" type="submit" class="btn btn-success">Submit</button>*@
+                                    </div>
+                                </div>
+
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+@section scripts{
+    <script>
+        //debugger;
+        $(document).ready(function () {
+            $.ajax({
+                url: "/Profile/AjaxMethod",
+                type: "GET",
+                contentType: "application/json;charset=utf-8",
+                dataType: "json",
+                success: function (result) {
+                    $('#txtUserFullName').text(result.First_name + " " + result.Last_name);
+                    $('#txtUserRole').text(result.Role);
+                    $('#First_name').val(result.First_name);
+                    $('#Last_name').val(result.Last_name);
+                    $('#Email').val(result.Email);
+                    $('#Username').val(result.Email);
+                    $('#Password').val(result.Password);
+                },
+                error: function (errormessage) {
+                    alert(errormessage.responseText);
+                }
+            });
+        });
+        $('#submit').click(function () {
+            var data = {
+
+
+            };
+            //$.post("/Profile/Edit", { user : data }, function () { window.location.href = "/Profile/Index" });
+        });
+
+    </script>
+}
+
+
+
+
+

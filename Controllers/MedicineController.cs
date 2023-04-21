@@ -26,8 +26,10 @@ namespace LoginApplication.Controllers
         }
         public JsonResult AjaxMethod()
         {
-            DBHandler dbHandle = new DBHandler();
-            var MedicineList = dbHandle.ConvertDataTable<Medicine>(dbHandle.GetAll("sp_medicine_select").Tables[0]);
+            SqlCommand com = new SqlCommand("sp_medicine_select");
+            com.CommandType = CommandType.StoredProcedure;
+            DBHandler dBHandler = new DBHandler();
+            var MedicineList = dBHandler.ConvertDataTable<Medicine>(dBHandler.GetsAll(com).Tables[0]);
             return Json(MedicineList);
         }
 
@@ -77,6 +79,8 @@ namespace LoginApplication.Controllers
         [HttpPost]
         public ActionResult Create(Medicine medicine)
         {
+            bool status = false;
+            string message = "";
             try
             {
 
@@ -88,13 +92,15 @@ namespace LoginApplication.Controllers
                
                 DBHandler dbHandler = new DBHandler();
                 var result = dbHandler.DMLOperation(com);
-                return RedirectToAction("Index");
+                status = true;
             }
             catch (Exception ex)
             {
+                
                 var errormessage = ex.Message;
                 return RedirectToAction("Error", errormessage);
             }
+            return Json(new {status=status, message=message});
         }
 
         // GET: Medicine/Edit/5
@@ -131,8 +137,11 @@ namespace LoginApplication.Controllers
         [HttpPost]
         public ActionResult Edit(Medicine medicine)
         {
+            bool status = false;
+            string message = "";
             try
             {
+
                 SqlCommand com = new SqlCommand("sp_medicine_update");
                 com.CommandType = CommandType.StoredProcedure;
                 com.Parameters.AddWithValue("@sr_id", medicine.sr_id);
@@ -141,12 +150,14 @@ namespace LoginApplication.Controllers
                 com.Parameters.AddWithValue("@Price", medicine.Price);
                 DBHandler dBHandler = new DBHandler();
                 var result = dBHandler.DMLOperation(com);
-                return RedirectToAction(nameof(Index));
+                status = true;
             }
             catch
             {
+
                 return View();
             }
+            return Json(new { status = status, message = message });
         }
 
         // GET: Medicine/Delete/5

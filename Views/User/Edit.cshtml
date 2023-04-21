@@ -20,67 +20,56 @@
                         <div class="card-title">User Details</div>
                     </div>
                     <div class="card-body">
-                        @using (Html.BeginForm())
-                        {
-                            @Html.AntiForgeryToken()
-                            <div class="form-horizontal">
-                                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-                                <div class="form-group">
-                                    @Html.LabelFor(model => model.First_name, htmlAttributes: new { @class = "" })
 
-                                    @Html.EditorFor(model => model.First_name, new { htmlAttributes = new { @class = "form-control" } })
-                                    @Html.ValidationMessageFor(model => model.First_name, "", new { @class = "text-danger" })
+                        <form id="AddUser" data-parsley-validate class="form-horizontal form-label-left">
+                            <input type="hidden" id="user_id" name="user_id" class="form-control" placeholder="">
 
-                                </div>
+                            <div class="form-group">
+                                <label for="First_name">First Name</label>
+                                <input type="text" id="First_name" name="First_name" class="form-control" placeholder="">
+                                <span class="First_name_error text-danger"></span>
+                            </div>
 
-                                <div class="form-group">
-                                    @Html.LabelFor(model => model.Last_name, htmlAttributes: new { @class = "" })
 
-                                    @Html.EditorFor(model => model.Last_name, new { htmlAttributes = new { @class = "form-control" } })
-                                    @Html.ValidationMessageFor(model => model.Last_name, "", new { @class = "text-danger" })
+                            <div class="form-group">
+                                <label for="Last_name">Last Name</label>
+                                <input type="text" id="Last_name" name="Last_name" class="form-control" placeholder="">
+                                <span class="Last_name_error text-danger"></span>
 
-                                </div>
+                            </div>
 
-                                <div class="form-group">
-                                    @Html.LabelFor(model => model.Email, htmlAttributes: new { @class = "" })
+                            <div class="form-group">
+                                <label for="Email">Email</label>
+                                <input type="email" id="Email" name="Email" class="form-control" placeholder="">
+                                <span class="email_error text-danger"></span>
+                            </div>
 
-                                    @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control" } })
-                                    @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+                            <div class="form-group">
+                                <label for="Password">Password</label>
+                                <input type="password" id="Password" name="Password" class="form-control" placeholder="">
+                                <span class="password_error text-danger"></span>
+                            </div>
 
-                                </div>
-
-                                <div class="form-group">
-                                    @Html.LabelFor(model => model.Password, htmlAttributes: new { @class = "" })
-
-                                    @Html.EditorFor(model => model.Password, new { htmlAttributes = new { @class = "form-control" } })
-                                    @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
-
-                                </div>
-
-                                <div class="form-group">
-                                    @Html.LabelFor(model => model.Role, htmlAttributes: new { @class = "" })
-
-                                    @Html.EditorFor(model => model.Role, new { htmlAttributes = new { @class = "form-control" } })
-                                    @Html.ValidationMessageFor(model => model.Role, "", new { @class = "text-danger" })
-
-                                </div>
-
-                                <div class="form-group">
-                                    @Html.LabelFor(model => model.IsActive, htmlAttributes: new { @class = "" })
-
-                                    <div class="checkbox">
-                                        @Html.EditorFor(model => model.IsActive)
-                                        @Html.ValidationMessageFor(model => model.IsActive, "", new { @class = "text-danger" })
-                                    </div>
-
-                                </div>
-                                <div class="form-group">
-                                    <div class="col-md-offset-2 col-md-10">
-                                        <input type="submit" value="Edit" class="btn btn-success" />
-                                    </div>
+                            <div class="form-group">
+                                <label for="Role">Role</label>
+                                <select class="form-control" id="Role">
+                                    <option value="" disabled>Select</option>
+                                    <option value="User">User</option>
+                                    <option value="Admin">Admin</option>
+                                </select>
+                            </div>
+                            <div class="form-check">
+                                <label class="form-check-label">
+                                    <input type="checkbox" id="IsActive" name="IsActive" value="true" class="form-check-input">
+                                    <span class="form-check-sign">Active</span>
+                                </label>
+                            </div><br /><br />
+                            <div class="form-group">
+                                <div class="col-md-offset-2 col-md-10">
+                                    <input id="btnEdit" type="button" value="Edit" class="btn btn-success" />
                                 </div>
                             </div>
-                        }
+                        </form>
                         <div class="card-action">
                             @Html.ActionLink("Back to List", "Index")
                         </div>
@@ -92,3 +81,126 @@
 
     </div>
 </div>
+
+@section scripts{
+    <script>
+        debugger;
+        $(document).ready(function () {
+
+            var f = @Html.Raw(ViewBag.Users);
+            console.log(f);
+            $("#user_id").val(f.user_id);
+            $("#First_name").val(f.First_name);
+            $("#Last_name").val(f.Last_name);
+            $("#Email").val(f.Email);
+            $("#Password").val(f.Password);
+            $("#Role").val(f.Role);
+            $("#IsActive").prop("checked", f.IsActive);
+
+            $("#AddUser").validate({
+                errorClass: "error fail-alert",
+                validClass: "valid success-alert",
+                rules: {
+                    First_name: {
+                        required: true,
+                        maxlength: 200,
+                        minlength: 4
+                    },
+                    Last_name: {
+                        required: true,
+                        maxlength: 200,
+                        minlength: 4
+                    },
+                    Email: {
+                        required: true,
+                        maxlength: 200,
+                        email: true
+                    },
+                    Password: {
+                        required: true,
+                        minlength: 3
+                    },
+                },
+                messages: {
+                    First_name: {
+                        required: "Enter proper first name",
+                        maxlength: "max 100 characters allowed",
+                        minlength: "min length 3"
+                    },
+                    Last_name: {
+                        required: "Enter proper last name",
+                        maxlength: "max 100 characters allowed",
+                        minlength: "min length 3"
+                    },
+                    Email: {
+                        required: "Enter an email",
+                        email: "Enter valid email address",
+                        maxlength: "max 100 characters allowed"
+                    },
+                    Password: {
+                        required: "Enter a password",
+                        minlength: "min length 3",
+                        maxlength: "max 100 characters allowed"
+                    }
+
+                },
+                errorPlacement: function (error, element) {
+                    var type = $(element).attr("name");
+                    console.log(type);
+
+                    if (type === "Email") {
+                        $(".email_error").append(error);
+                    }
+                    else if (type === "Password") {
+                        $(".password_error").append(error);
+                    }
+                    else if (type === "First_name") {
+                        $(".First_name_error").append(error);
+                    }
+                    else if (type === "Last_name") {
+                        $(".Last_name_error").append(error);
+                    }
+                },
+            });
+
+            $('#btnEdit').click(function () {
+                if ($('#AddUser').valid()) {
+
+                    var data = {
+                        user_id: $('#user_id').val(),
+                        First_name: $('#First_name').val(),
+                        Last_name: $('#Last_name').val(),
+                        Email: $('#Email').val(),
+                        Password: $('#Password').val(),
+                        Role: $('#Role').val(),
+                        IsActive: $('#IsActive').is(":checked"),
+
+
+                    };
+                    $.post("/User/Edit", { users: data },
+
+                        function (response) {
+
+                            console.log(response);
+
+                            if (response.status) {
+
+                                console.log(response.status);
+
+                                window.location.href = "/User/Index";
+
+                            }
+
+                            else {
+
+                                alert(response.message);
+
+                            }
+
+                        });
+                    //$.post("/User/Edit", { users: data }, function () { window.location.href = "/User/Index" });
+                }
+            });
+        });
+    </script>
+}

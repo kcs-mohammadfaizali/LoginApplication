@@ -5,6 +5,7 @@ using System.Data;
 using System.Linq;
 using System.Reflection;
 using System.Web;
+using System.Configuration;
 
 namespace LoginApplication.Models
 {
@@ -16,16 +17,10 @@ namespace LoginApplication.Models
         {
             constring = "Data Source=KCSLAP5204\\SQLEXPRESS;Initial Catalog=MedicalPrescriptionManagment;Integrated Security=True";
         }
-
-
-
         private void connection()
         {
             con = new SqlConnection(constring);
         }
-
-
-
         // Get all records
         public DataSet GetAll(string sp)
         {
@@ -53,6 +48,30 @@ namespace LoginApplication.Models
             }
             return ds;
         }
+        public DataSet GetsAll(SqlCommand com)
+        {
+            DataSet ds = new DataSet();
+            try
+            {
+                connection();
+                con.Open();
+                com.Connection = con;
+                SqlDataAdapter sd = new SqlDataAdapter(com);
+                sd.Fill(ds);
+            }
+            catch
+            {
+
+
+
+            }
+            finally
+            {
+                con.Close();
+            }
+            return ds;
+        }
+
         public DataTable GetSingle(SqlCommand com)
         {
             DataTable dt = new DataTable();
@@ -76,9 +95,6 @@ namespace LoginApplication.Models
             }
             return dt;
         }
-
-
-
         public string DMLOperation(SqlCommand com)
         {
             string status = "Success";
@@ -117,9 +133,6 @@ namespace LoginApplication.Models
             }
             return data;
         }
-
-
-
         private static T GetItem<T>(DataRow dr)
         {
             Type temp = typeof(T);

@@ -3,14 +3,12 @@
     ViewBag.Title = "Edit";
     Layout = "~/Views/Shared/_UserLayout.cshtml";
 }
-
-<h2>Edit</h2>
 <!-- page content -->
 <div class="right_col" role="main">
     <div class="">
         <div class="page-title">
             <div class="title_left">
-                <h3><i class="fa fa-user-plus"></i> Edit Patient</h3>
+                <h3><i class="fa fa-user-plus"></i> Add Patient</h3>
             </div>
         </div>
 
@@ -39,50 +37,58 @@
                             </div>
                             <div class="item form-group">
                                 <div class="col-md-8 col-sm-8 offset-md-2">
-                                    <input type="text" id="P_First_name" class="form-control has-feedback-left" placeholder="First Name">
+                                    <input type="text" id="P_First_name" name="P_First_name" class="form-control has-feedback-left" placeholder="First Name">
                                     <span class="fa fa-user form-control-feedback left" aria-hidden="true"></span>
+                                    <span class="P_First_name_error text-danger"></span>
                                 </div>
                             </div>
                             <div class="item form-group">
                                 <div class="col-md-8 col-sm-8 offset-md-2">
-                                    <input type="text" id="P_Last_name" class="form-control has-feedback-left" placeholder="Last Name">
+                                    <input type="text" id="P_Last_name" name="P_Last_name" class="form-control has-feedback-left" placeholder="Last Name">
                                     <span class="fa fa-user form-control-feedback left" aria-hidden="true"></span>
+                                    <span class="P_Last_name_error text-danger"></span>
                                 </div>
                             </div>
                             <div class="item form-group">
                                 <div class="col-md-8 col-sm-8 offset-md-2">
-                                    <input type="text" id="Medical_condition" class="form-control has-feedback-left" placeholder="Medical condition">
+                                    <input type="text" id="Medical_condition" name="Medical_condition" class="form-control has-feedback-left" placeholder="Medical condition">
                                     <span class="fa fa-heartbeat form-control-feedback left" aria-hidden="true"></span>
+                                    <span class="Medical_condition_error text-danger"></span>
                                 </div>
                             </div>
                             <div class="item form-group">
                                 <div class="col-md-8 col-sm-8 offset-md-2">
-                                    <input type="text" id="IsFollowUp" class="form-control has-feedback-left" placeholder="Is Follow Up(true/false)">
-                                    <span class="fa fa-arrow-up form-control-feedback left" aria-hidden="true"></span>
+                                    <label class="form-control has-feedback-left" for="IsFollowUp">IsFollowUp</label>
+                                    <input class="form-control-feedback left form-check-inline" type="checkbox" id="IsFollowUp" name="IsFollowUp" />
+                                    <span class="IsFollowUp_error text-danger"></span>
+
                                 </div>
-                            </div>
+                            </div><br />
 
                             <div class="item form-group">
                                 <div class="col-md-8 col-sm-8 offset-md-2">
-                                    <label><i class="fa fa-home"></i> Contact Information</label>
+                                    <label><i class="fa fa-address-card"></i> Contact Information</label>
                                 </div>
                             </div>
                             <div class="item form-group">
                                 <div class="col-md-8 col-sm-8 offset-md-2">
-                                    <input id="P_Phone" type="tel" class="form-control has-feedback-left" placeholder="ex. 09809879797">
+                                    <input id="P_Phone" name="P_Phone" type="tel" class="form-control has-feedback-left" placeholder="ex. 09809879797">
                                     <span class="fa fa-phone form-control-feedback left" aria-hidden="true"></span>
+                                    <span class="P_Phone_error text-danger"></span>
                                 </div>
                             </div>
                             <div class="item form-group">
                                 <div class="col-md-8 col-sm-8 offset-md-2">
-                                    <input id="P_Email" type="email" class="form-control has-feedback-left" placeholder="ex. patient@gmail.com">
+                                    <input id="P_Email" name="P_Email" type="email" class="form-control has-feedback-left" placeholder="ex. patient@gmail.com">
                                     <span class="fa fa-envelope form-control-feedback left" aria-hidden="true"></span>
+                                    <span class="P_Email_error text-danger"></span>
                                 </div>
                             </div>
                             <div class="item form-group">
                                 <div class="col-md-8 col-sm-8 offset-md-2">
-                                    <input type="text" id="P_Address" class="form-control has-feedback-left" placeholder="First Name">
-                                    <span class="fa fa-home form-control-feedback left" aria-hidden="true"></span>
+                                    <input type="text" id="P_Address" name="P_Address" class="form-control has-feedback-left" placeholder="Address">
+                                    <span class="fa fa-address-book form-control-feedback left" aria-hidden="true"></span>
+                                    <span class="P_Address_error text-danger"></span>
                                 </div>
                             </div>
                             <div class="item form-group">
@@ -99,49 +105,155 @@
     </div>
 </div>
 @section scripts{
+    @*<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/jquery.validate.min.js"></script>*@
     <script>
-        @*
-        $(function () {
-        use this part for loading at particular section in a page
-        });*@
-            $(document).ready(function () {
-
-        @*
-                use this part for loading entire page
-                *@
-                var f = @Html.Raw(ViewBag.Patients);
-
-                $("#P_First_name").val(f.P_First_name);
-                $("#P_Last_name").val(f.P_Last_name);
-                $("#P_Phone").val(f.P_Phone);
-                $("#P_Email").val(f.P_Email);
-                $("#P_Address").val(f.P_Address);
-                $("#Medical_condition").val(f.Medical_condition);
-                $("#IsFollowUp").val(f.IsFollowUp);
-                $("#patient_id").val(f.patient_id);
-                $("#user_id").val(f.user_id);
-            });
-        $('#btnCancel').click(function () {
-            window.location.href = "/Patients/Index"
-        });
-        $('#btnEdit').click(function () {
-            var data = {
-                patient_id: $("#patient_id").val(),
-                P_First_name: $('#P_First_name').val(),
-                P_Last_name: $('#P_Last_name').val(),
-                P_Phone: $('#P_Phone').val(),
-                P_Email: $('#P_Email').val(),
-                P_Address: $('#P_Address').val(),
-                Medical_condition: $('#Medical_condition').val(),
-                IsFollowUp: $('#IsFollowUp').val(),
-                user_id: $('#user_id').val(),
-            };
-            $.post("/Patients/Edit", { patients: data }, function () {
+        $(document).ready(function () {
+            var f = @Html.Raw(ViewBag.Patients);
+                $("#P_First_name").val(f.P_First_name);
+                $("#P_Last_name").val(f.P_Last_name);
+                $("#P_Phone").val(f.P_Phone);
+                $("#P_Email").val(f.P_Email);
+                $("#P_Address").val(f.P_Address);
+                $("#Medical_condition").val(f.Medical_condition);
+                $("#IsFollowUp").prop("checked", f.IsFollowUp);
+                $("#patient_id").val(f.patient_id);
+                $("#user_id").val(f.user_id);
+            $('#btnCancel').click(function () {
                 window.location.href = "/Patients/Index"
             });
+            $('#btnEdit').click(function () {
+                if ($('#patient_edit').valid()) {
+                    var data = {
+                        patient_id: $("#patient_id").val(),
+                        P_First_name: $('#P_First_name').val(),
+                        P_Last_name: $('#P_Last_name').val(),
+                        P_Phone: $('#P_Phone').val(),
+                        P_Email: $('#P_Email').val(),
+                        P_Address: $('#P_Address').val(),
+                        Medical_condition: $('#Medical_condition').val(),
+                        IsFollowUp: $('#IsFollowUp').is(":checked"),
+                        user_id: $('#user_id').val(),
+                    };
+                    /*$.post("/Patients/Create", { patients: data }, function () { window.location.href = "/Patients/Index" });*/
+
+                    $.post("/Patients/Edit", { patients: data },
+
+                        function (response) {
+
+                            console.log(response);
+
+                            if (response.status) {
+
+                                console.log(response.status);
+
+                                window.location.href = "/Patients/Index";
+
+                            }
+
+                            else {
+
+                                alert(response.message);
+
+                            }
+
+                        });
+                }
+            });
+
         });
+        $("#patient_edit").validate({
+            errorClass: "error fail-alert",
+            validClass: "valid success-alert",
+            rules: {
+                P_First_name: {
+                    required: true,
+                    maxlength: 200,
+                    minlength: 4
+                },
+                P_Last_name: {
+                    required: true,
+                    maxlength: 200,
+                    minlength: 4
+                },
+                Medical_condition: {
+                    required: true,
+                    maxlength: 200
+                },
+
+                P_Phone: {
+                    required: true,
+                    minlength: 3
+                },
+                P_Email: {
+                    required: true,
+                    maxlength: 200
+                },
+                P_Address: {
+                    required: true,
+                    maxlength: 200
+                },
+            },
+            messages: {
+                P_First_name: {
+                    required: "Enter proper first name",
+                    maxlength: "max 100 characters allowed",
+                    minlength: "min length 3"
+                },
+                P_Last_name: {
+                    required: "Enter proper last name",
+                    maxlength: "max 100 characters allowed",
+                    minlength: "min length 3"
+                },
+                Medical_condition: {
+                    required: "Enter medical condition",
+                    maxlength: "max 100 characters allowed"
+                },
+                P_Phone: {
+                    required: "Enter an number",
+                    email: "Enter valid phone number",
+                    maxlength: "max 100 characters allowed"
+                },
+                P_Email: {
+                    required: "Enter an email",
+                    email: "Enter valid email address",
+                    maxlength: "max 100 characters allowed"
+                },
+                P_Address: {
+                    required: "Enter an address",
+                    email: "Enter valid patient address",
+                    maxlength: "max 100 characters allowed"
+                }
+
+            },
+            errorPlacement: function (error, element) {
+                var type = $(element).attr("name");
+                console.log(type);
+
+                if (type === "P_Email") {
+                    $(".P_Email_error").append(error);
+                }
+                else if (type === "P_Address") {
+                    $(".P_Address_error").append(error);
+                }
+                else if (type === "P_Phone") {
+                    $(".P_Phone_error").append(error);
+                }
+                else if (type === "P_First_name") {
+                    $(".P_First_name_error").append(error);
+                }
+                else if (type === "P_Last_name") {
+                    $(".P_Last_name_error").append(error);
+                }
+                else if (type === "Medical_condition") {
+                    $(".Medical_condition_error").append(error);
+                }
+                else if (type === "IsFollowUp") {
+                    $(".IsFollowUp_error").append(error);
+                }
+            },
+        });
+
+
     </script>
 }
-
-
-

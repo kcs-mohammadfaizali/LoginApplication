@@ -1,0 +1,218 @@
+﻿
+@{
+    ViewBag.Title = "Order";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="right_col" role="main">
+    <div class="">
+        <div class="page-title">
+            <div class="title_left">
+                <h3><i class="fa fa-user-plus"></i>Buy Medicine</h3>
+            </div>
+        </div>
+        <div class="clearfix"></div>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-header">
+                        <div class="card-title">Medicine Details</div>
+                    </div>
+                    <div class="card-body">
+                        <form id="BuyMedicine" data-parsley-validate class="form-horizontal form-label-left">
+                            <div class="item form-group">
+                                <label class="col-form-label col-md-3 col-sm-3 label-align" for="PrescriptionDropdown">Select Prescription</label>
+                                <div class="col-md-8 col-sm-8 ">
+                                    <select required="required" class="form-control" id="PrescriptionDropdown" name="PrescriptionDropdown">
+                                    </select>
+                                    <span class="PrescriptionDropdown-error"></span>
+
+                                </div>
+                            </div>
+                            <div class="item form-group">
+                                <label class="col-form-label col-md-3 col-sm-3 label-align" for="MedicineDropDown">Select Medicine</label>
+                                <div class="col-md-8 col-sm-8 ">
+                                    <select required="required" class="form-control" id="MedicineDropDown" name="MedicineDropDown">
+                                    </select>
+                                    <span class="MedicineDropDown-error"></span>
+
+                                </div>
+                            </div>
+                            <div class="item form-group">
+                                <label for="Price" class="col-form-label col-md-3 col-sm-3 label-align">Price/unit</label>
+                                <div class="col-md-8 col-sm-8 ">
+                                    <input disabled type="number" id="Price" class="form-control" name="Price">
+
+
+                                </div>
+                            </div>
+                            <div class="item form-group">
+                                <label class="col-form-label col-md-3 col-sm-3 label-align">Total Stock:</label>
+                                <div class="col-md-8 col-sm-8 ">
+                                    <input disabled type="number" id="TotalStock" name="TotalStock" class="form-control">
+                                </div>
+                            </div>
+                            <div class="item form-group">
+                                <label for="Quantity" class="col-form-label col-md-3 col-sm-3 label-align">Enter Quantity</label>
+                                <div class="col-md-8 col-sm-8 ">
+                                    <input required="required" type="number" id="Quantity" class="form-control" name="Quantity">
+                                    <span class="Quantity-error"></span>
+                                </div>
+                            </div>
+                            <div class="item form-group">
+                                <label class="col-form-label col-md-3 col-sm-3 label-align">Total:</label>
+                                <div class="col-md-8 col-sm-8 ">
+                                    <input disabled id="TotalPrice" class="form-control" type="text" placeholder="Total">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-md-offset-2 col-md-10">
+                                    <input id="btnCreate" type="button" value="Create" class="btn btn-success" />
+                                </div>
+                            </div>
+                        </form>
+                        <div class="card-action">
+                            @Html.ActionLink("Back to List", "Index")
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+@section scripts{
+    @*<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.1/jquery.validate.min.js"></script>*@
+    <script>
+        //debugger;
+        $(document).ready(function () {
+
+            $.ajax({
+                url: "/Sales/getPrescription",
+                type: "GET",
+                contentType: "application/json;charset=utf-8",
+                dataType: "json",
+                success: function (result) {
+                    var html = '<option  value = "Select" disabled selected > Select </option>';
+                    $.each(result, function (key, item) {
+                        html += '<option value=' + item.Prescription_id + '>' + item.Prescription_id + " " + item.name +'</option>';
+                        // html += '<option>' + item.patient_id + '</option>';
+
+                    });
+                    $('#PrescriptionDropdown').html(html);
+
+                },
+                error: function (errormessage) {
+                    alert(errormessage.responseText);
+                }
+            });
+            $.ajax({
+                url: "/Sales/getMedicine",
+                type: "GET",
+                contentType: "application/json;charset=utf-8",
+                dataType: "json",
+                success: function (result) {
+                    var html = '<option  value = "Select" disabled selected > Select </option>';
+                    $.each(result, function (key, item) {
+                        html += '<option value=' + item.sr_id + '>' + item.Medicine_name + '</option>';
+                        // html += '<option>' + item.patient_id + '</option>';
+
+                    });
+                    $('#MedicineDropDown').html(html);
+                },
+                error: function (errormessage) {
+                    alert(errormessage.responseText);
+                }
+            });
+            $('#MedicineDropDown').change(function () {
+                $('#TotalPrice').val(0);
+                $('#Quantity').val(0);
+
+                        var url = "@Url.Content("/Sales/getMedicineById")";
+                        $.getJSON(url, { id: $('#MedicineDropDown').val() }, function (result) {
+                            //debugger;
+                            console.log(result);
+                            console.log(result[0].Price);
+                            $('#Price').val(result[0].Price);
+                            $('#TotalStock').val(result[0].Total_stock);
+
+                        });
+            });
+            $('#Quantity').change(function () {
+                var total = $('#Quantity').val() * $('#Price').val();
+                //debugger;
+                $('#TotalPrice').val(total);
+                    });
+        });
+        $("#BuyMedicine").validate({
+            errorClass: "error fail-alert",
+            validClass: "valid success-alert",
+            rules: {
+                PrescriptionDropdown: {
+                    required: true,
+
+                },
+                MedicineDropDown: {
+                    required: true,
+                },
+                Quantity: {
+                    required: true,
+                }
+            },
+            messages: {
+                PrescriptionDropdown: {
+                    required: "Select A Prescription",
+
+                },
+                MedicineDropDown: {
+                    required: "Select a medicine",
+
+                },
+                Quantity: {
+                    required: "Enter Quantity",
+                    minlength: "quantity must be at least 1"
+                }
+
+            },
+            errorPlacement: function (error, element) {
+                var type = $(element).attr("name");
+                console.log(type);
+
+                if (type === "PrescriptionDropdown") {
+                    $(".PrescriptionDropdown-error").append(error);
+                }
+                else if (type === "MedicineDropDown") {
+                    $(".MedicineDropDown-error").append(error);
+                }
+                else if (type === "Quantity") {
+                    $(".Quantity-error").append(error);
+                }
+
+            },
+
+        });
+        $('#btnCreate').click(function () {
+            if ($('#BuyMedicine').valid()) {
+            var data = {
+                Prescription_id: $("#PrescriptionDropdown option:selected").val(),
+                sr_id: $("#MedicineDropDown option:selected").val(),
+                quantity: $("Quantity").val(),
+                price: $("TotalPrice").val(),
+
+
+            };
+                $.post("/Sales/Order", { prescription: data }, function (response) {
+                    console.log(response);
+                    if (response.status) {
+                        window.location.href = "/Sales/Index";
+                    }
+                    else {
+                        alert(response.message);
+                    }
+                });
+            }
+        });
+
+    </script>
+}
+
+

@@ -26,9 +26,10 @@ namespace LoginApplication.Controllers
         }
         public JsonResult AjaxMethod()
         {
-
+            SqlCommand com = new SqlCommand("[sp_user_select]");
+            com.CommandType = CommandType.StoredProcedure;
             DBHandler dbHandle = new DBHandler();
-            var UserList = dbHandle.ConvertDataTable<Users>(dbHandle.GetAll("sp_user_select").Tables[0]);
+            var UserList = dbHandle.ConvertDataTable<Users>(dbHandle.GetsAll(com).Tables[0]);
             return Json(UserList);
         }
 
@@ -56,6 +57,8 @@ namespace LoginApplication.Controllers
         [HttpPost]
         public ActionResult Create(Users users)
         {
+            bool status = false;
+            string message = "";
             try
             {
 
@@ -69,13 +72,14 @@ namespace LoginApplication.Controllers
                 com.Parameters.AddWithValue("@IsActive", users.IsActive);
                 DBHandler dbHandler = new DBHandler();
                 var result = dbHandler.DMLOperation(com);
-                return RedirectToAction("Index");
+                status = true;
             }
             catch (Exception ex)
             {
-                var errormessage = ex.Message;
-                return RedirectToAction("Error", errormessage);
+                message = ex.Message;
             }
+            return Json(new { status = status, message = message });
+
         }
 
         // GET: User/Edit/5
@@ -90,8 +94,8 @@ namespace LoginApplication.Controllers
                     com.Parameters.AddWithValue("@user_id", id);
                     DBHandler dBHandler = new DBHandler();
                     var users= dBHandler.ConvertDataTable<Users>(dBHandler.GetSingle(com)).First<Users>();
-                    //ViewBag.User = JsonSerializer.Serialize(users);
-                    return View(users);
+                    ViewBag.Users = JsonSerializer.Serialize(users);
+                    return View();
                 }
                 catch
                 {
@@ -106,13 +110,15 @@ namespace LoginApplication.Controllers
 
         // POST: User/Edit/5
         [HttpPost]
-        public ActionResult Edit(int id, Users users)
+        public ActionResult Edit(Users users)
         {
+            bool status = false;
+            string message = "";
             try
             {
                 SqlCommand com = new SqlCommand("sp_user_update");
                 com.CommandType = CommandType.StoredProcedure;
-                com.Parameters.AddWithValue("@user_id",id);
+                com.Parameters.AddWithValue("@user_id",users.user_id);
                 com.Parameters.AddWithValue("@First_name", users.First_name);
                 com.Parameters.AddWithValue("@Last_name", users.Last_name);
                 com.Parameters.AddWithValue("@Password", users.Password);
@@ -121,12 +127,14 @@ namespace LoginApplication.Controllers
                 com.Parameters.AddWithValue("@IsActive", users.IsActive);
                 DBHandler dBHandler = new DBHandler();
                 var result = dBHandler.DMLOperation(com);
-                return RedirectToAction(nameof(Index));
+                status = true;
             }
-            catch
+            catch(Exception ex)
             {
-                return View();
+                message = ex.Message;
             }
+            return Json(new { status = status, message = message });
+
         }
 
         // GET: User/Delete/5

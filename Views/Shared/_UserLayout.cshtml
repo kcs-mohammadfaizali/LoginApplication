@@ -46,8 +46,9 @@
                             <ul class="nav side-menu">
                                 <li><a href="/Login/UserDashBoard"><i class="fa fa-tachometer"></i> Dashboard</a></li>
                                 <li><a href="/Patients/Index"><i class="fa fa-desktop"></i>Patients</a></li>
-                                <li><a href="daily-sales.php"><i class="fa fa-shopping-cart"></i>Medicines</a></li>
-                                <li><a href="profile.php"><i class="fa fa-user"></i> Profile</a></li>
+                                <li><a href="/Prescription/Index"><i class="fa fa-book"></i>Prescription</a></li>
+                                <li><a href="/Sales/Index"><i class="fa fa-shopping-cart"></i>Medicines</a></li>
+                                <li><a href="/Profile/Index"><i class="fa fa-user"></i> Profile</a></li>
                             </ul>
                         </div>
                     </div>
@@ -83,7 +84,7 @@
                                     <img src="~/Contents/cashier/images/picture.jpg" alt="">@ViewBag.User
                                 </a>
                                 <div class="dropdown-menu dropdown-usermenu pull-right" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item" href="javascript:;"><i class="fa fa-user pull-right"></i> Profile</a>
+                                    <a class="dropdown-item" href="/Profile/Index"><i class="fa fa-user pull-right"></i> Profile</a>
                                     <a class="dropdown-item" href="javascript:;"><i class="fa fa-cog pull-right"></i> Settings</a>
                                     <a class="dropdown-item" href="/Login/Logout"><i class="fa fa-sign-out pull-right"></i> Log Out</a>
                                 </div>
@@ -98,10 +99,9 @@
             @RenderBody()
         </div>
     </div>
-    <!-- jQuery -->
-    <script src="~/Contents/vendors/jquery/dist/jquery.min.js"></script>
-    <!-- Bootstrap -->
-    <script src="~/Contents/vendors/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/Scripts/jquery-3.4.1.js"></script>
+    <script src="~/Scripts/bootstrap.js"></script>
+    <script src="~/Scripts/jquery.validate.min.js"></script>
     <!-- Datatables -->
     <script src="~/Contents/vendors/datatables.net/js/jquery.dataTables.min.js"></script>
     <script src="~/Contents/vendors/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
