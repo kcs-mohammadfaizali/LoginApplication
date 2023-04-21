@@ -16,14 +16,35 @@ namespace LoginApplication.Controllers
         [HandleError]
         public ActionResult Index()
         {
-
             if (Session["userid"] != null)
+            {
+                if (Session["Role"].ToString() == "Admin")
+                {
+                    return RedirectToAction("AdminIndex");
+                }
+                else
+                {
+                    return View();
+                }
+            }
+            else
+            {
+                return RedirectToAction("Index", "Login");
+            }
+        }
+        // GET: Prescription
+        [HandleError]
+        public ActionResult AdminIndex()
+        {
+
+            if (Session["userid"] != null && Session["Role"].ToString() == "Admin")
             {
                 return View();
             }
             else
             {
                 return RedirectToAction("Index", "Login");
+
             }
         }
         public JsonResult AjaxMethod()
@@ -57,6 +78,17 @@ namespace LoginApplication.Controllers
             }
         }
 
+        public ActionResult AdminCreate()
+        {
+            if (Session["userid"] != null)
+            {
+                return View();
+            }
+            else
+            {
+                return RedirectToAction("Index", "Login");
+            }
+        }
         public JsonResult getPatient()
         {
             DBHandler dbHandle = new DBHandler();
@@ -110,7 +142,25 @@ namespace LoginApplication.Controllers
                 return View();
             }
         }
-
+        public ActionResult  AdminEdit(int id)
+        {
+            try
+            {
+                SqlCommand com = new SqlCommand("sp_prescription_details");
+                com.CommandType = CommandType.StoredProcedure;
+                com.Parameters.AddWithValue("@Prescription_id", id);
+                DBHandler dBHandler = new DBHandler();
+                //var CustomerList = dBHandler.ConvertDataTable<Customer>(dBHandler.GetSingle(com));
+                //var customer = CustomerList.First();
+                var prescription = dBHandler.ConvertDataTable<Prescription>(dBHandler.GetSingle(com)).First<Prescription>();
+                ViewBag.Prescription = JsonSerializer.Serialize(prescription);
+                return View();
+            }
+            catch
+            {
+                return View();
+            }
+        }
         // POST: Prescription/Edit/5
         [HttpPost]
         public ActionResult Edit(Prescription prescription)

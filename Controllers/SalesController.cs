@@ -18,11 +18,31 @@ namespace LoginApplication.Controllers
             {
                 return View();
             }
-            else
+            else if (Session["userid"] != null && Session["Role"].ToString() == "User")
+            {
+                return  RedirectToAction("UserIndex");
+            }
+            else 
             {
                 return RedirectToAction("Index","Login");
             }
             
+        }
+        public ActionResult UserIndex()
+        {
+            if (Session["userid"] != null && Session["Role"].ToString() == "Admin")
+            {
+                return RedirectToAction("Index");
+            }
+            else if (Session["userid"] != null && Session["Role"].ToString() == "User")
+            {
+                return View();
+            }
+            else
+            {
+                return RedirectToAction("Index", "Login");
+            }
+
         }
 
         //public  JsonResult TablesColumnDisplay()
@@ -69,9 +89,30 @@ namespace LoginApplication.Controllers
             var SalesList = dBHandler.ConvertDataTable<MedicineSales>(dBHandler.GetsAll(com).Tables[0]);
             return Json(SalesList);
         }
+        public JsonResult UserAjaxMethod()
+        {
+
+            SqlCommand com = new SqlCommand("sp_prescription_details_select");
+            com.CommandType = CommandType.StoredProcedure;
+            com.Parameters.AddWithValue("@user_id", int.Parse(Session["userid"].ToString()));
+            DBHandler dBHandler = new DBHandler();
+            var SalesList = dBHandler.ConvertDataTable<MedicineSales>(dBHandler.GetsAll(com).Tables[0]);
+            return Json(SalesList);
+        }
         public ActionResult Order()
         {
             if (Session["userid"] != null && Session["Role"].ToString() == "Admin")
+            {
+                return View();
+            }
+            else
+            {
+                return RedirectToAction("Index", "Login");
+            }
+        }
+        public ActionResult UserOrder()
+        {
+            if (Session["userid"] != null && Session["Role"].ToString() == "User")
             {
                 return View();
             }
@@ -112,26 +153,28 @@ namespace LoginApplication.Controllers
 
         // POST: Prescription/Create
         [HttpPost]
-        public ActionResult Order(MedicineSales prescription)
+        public ActionResult Order(MedicineSales medicineSales)
         {
+            bool status = false;
+            string message = "";
             try
             {
-                SqlCommand com = new SqlCommand("[sp_prescription_insert]");
+                SqlCommand com = new SqlCommand("sp_prescription_details_insert");
                 com.CommandType = CommandType.StoredProcedure;
-                com.Parameters.AddWithValue("@patient_id", prescription.Prescription_id);
-                com.Parameters.AddWithValue("@patient_id", prescription.sr_id);
-                com.Parameters.AddWithValue("@patient_id", prescription.quantity);
-                com.Parameters.AddWithValue("@patient_id", prescription.totalprice);
+                com.Parameters.AddWithValue("@Prescription_id", medicineSales.Prescription_id);
+                com.Parameters.AddWithValue("@sr_id", medicineSales.sr_id);
+                com.Parameters.AddWithValue("@quantity", medicineSales.quantity);
+                com.Parameters.AddWithValue("@price", medicineSales.price);
 
                 DBHandler dbHandler = new DBHandler();
                 var result = dbHandler.DMLOperation(com);
-                ViewBag.createError = result.ToString();
-                return RedirectToAction("Index");
+                status = true;
             }
-            catch
+            catch (Exception ex)
             {
-                return View();
+                message = ex.Message;
             }
+            return Json(new { status = status, message = message });
         }
 
     }

@@ -25,7 +25,7 @@ namespace LoginApplication.Controllers
             }
         }
         [HttpGet]
-        public JsonResult AjaxMethod()
+        public JsonResult AjaxMethod(string startDate,string stopDate)
         {
 
             SqlCommand com = new SqlCommand("sp_prescription_report");
