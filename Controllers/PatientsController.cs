@@ -243,8 +243,26 @@ namespace LoginApplication.Controllers
             return View(patients);
         }
         // POST: Patients/Delete/5
+
         [HttpPost]
         public ActionResult Delete(int id, FormCollection collection)
+        {
+            try
+            {
+                SqlCommand com = new SqlCommand("sp_patient_delete");
+                com.CommandType = CommandType.StoredProcedure;
+                com.Parameters.AddWithValue("@patient_id", id);
+                DBHandler dBHandler = new DBHandler();
+                var result = dBHandler.DMLOperation(com);
+                return RedirectToAction(nameof(Index));
+            }
+            catch
+            {
+                return View();
+            }
+        }
+        [HttpPost]
+        public ActionResult AdminDelete(int id, FormCollection collection)
         {
             try
             {

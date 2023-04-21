@@ -65,10 +65,12 @@
         } 
         //debugger;
         $(document).ready(function () {
-            
+            var startDate = "21-04-2023";
+            var stopDate = "21-04-2023";
             $.ajax({
                 url: "/Report/AjaxMethod",
                 type: "GET",
+                data: { startDate: startDate, stopDate: stopDate },  
                 contentType: "application/json;charset=utf-8",
                 dataType: "json",
                 success: function (result) {

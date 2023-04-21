@@ -1,9 +1,8 @@
 ﻿
 @{
-    ViewBag.Title = "Order";
-    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+    ViewBag.Title = "UserOrder";
+    Layout = "~/Views/Shared/_UserLayout.cshtml";
 }
-
 <div class="right_col" role="main">
     <div class="">
         <div class="page-title">
@@ -94,7 +93,7 @@
                 success: function (result) {
                     var html = '<option  value = "Select" disabled selected > Select </option>';
                     $.each(result, function (key, item) {
-                        html += '<option value=' + item.Prescription_id + '>' + item.Prescription_id + "/" + item.name +"/"+ item.Date + '</option>';
+                        html += '<option value=' + item.Prescription_id + '>' + item.Prescription_id + " " + item.name +'</option>';
                         // html += '<option>' + item.patient_id + '</option>';
 
                     });
@@ -202,21 +201,22 @@
                         quantity: $("#Quantity").val(),
                         price: $("#TotalPrice").val(),
                     };
-                $.post("/Sales/Order", { medicineSales: data }, function (response) {
-                    console.log(response);
-                    if (response.status) {
-                        window.location.href = "/Sales/Index";
-                    }
-                    else {
-                        alert(response.message);
-                    }
-                });
+                    $.post("/Sales/Order", { medicineSales: data }, function (response) {
+                        console.log(response);
+                        if (response.status) {
+                            window.location.href = "/Sales/Index";
+                        }
+                        else {
+                            alert(response.message);
+                        }
+                    });
                 }
-            
+
             }
         });
-
     </script>
 }
+
+
 
 

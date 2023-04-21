@@ -1070,6 +1070,12 @@
     <Content Include="Views\Sales\Order.cshtml" />
     <Content Include="Views\Medicine\Edit.cshtml" />
     <Content Include="Views\Report\Index.cshtml" />
+    <Content Include="Views\Patients\AdminDelete.cshtml" />
+    <Content Include="Views\Prescription\AdminIndex.cshtml" />
+    <Content Include="Views\Prescription\AdminCreate.cshtml" />
+    <Content Include="Views\Prescription\AdminEdit.cshtml" />
+    <Content Include="Views\Sales\UserIndex.cshtml" />
+    <Content Include="Views\Sales\UserOrder.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

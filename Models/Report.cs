@@ -9,6 +9,6 @@ namespace LoginApplication.Models
     {
         public DateTime Date { get; set; }
         public int totalprescription { get; set; }
-        //public decimal prescription_amount { get; set; }
+        public decimal price { get; set; }
     }
 }
