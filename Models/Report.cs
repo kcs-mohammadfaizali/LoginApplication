@@ -10,5 +10,7 @@ namespace LoginApplication.Models
         public DateTime Date { get; set; }
         public int totalprescription { get; set; }
         public decimal price { get; set; }
+        public string Medicine_name { get; set; }
+        public int totalquantity { get; set; }
     }
 }

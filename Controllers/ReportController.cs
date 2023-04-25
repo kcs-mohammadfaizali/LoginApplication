@@ -15,7 +15,7 @@ namespace LoginApplication.Controllers
         public ActionResult Index()
         {
 
-            if (Session["Role"].ToString() == "Admin")
+            if (Session["Role"]!=null && Session["Role"].ToString() == "Admin")
             {
                 return View();
             }
@@ -25,12 +25,12 @@ namespace LoginApplication.Controllers
             }
         }
         [HttpGet]
-        public JsonResult AjaxMethod(string startDate,string stopDate)
+        public JsonResult AjaxMethod(string action, string startDate,string stopDate)
         {
 
             SqlCommand com = new SqlCommand("sp_prescription_report");
             com.CommandType = CommandType.StoredProcedure;
-            //com.Parameters.AddWithValue("@patient_id", id);
+            com.Parameters.AddWithValue("@Action", startDate);
             DBHandler dBHandler = new DBHandler();
             var SalesList = dBHandler.ConvertDataTable<Report>(dBHandler.GetsAll(com).Tables[0]);
             return Json(SalesList, JsonRequestBehavior.AllowGet);
