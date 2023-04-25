@@ -24,7 +24,7 @@
                     <div class="x_content">
                         <!-- graph area -->
                         <div class="col-md-4 col-sm-4">
-                            <table id="tblReport" class="table table-striped table-bordered" style="width:100%">
+                            <table id="tblReportDate" class="table table-striped table-bordered" style="width:100%">
                                 <thead>
                                     <tr>
                                         <th>Date</th>
@@ -38,16 +38,17 @@
                         </div>
 
                         <div class="col-md-8 col-sm-8  ">
-                            <div class="x_panel">
-                                <div class="x_title">
-                                    <h2>Sales Amount</h2>
-
-                                    <div class="clearfix"></div>
-                                </div>
-                                <div class="x_content">
-                                    <canvas id="lineChart"></canvas>
-                                </div>
-                            </div>
+                            <table id="tblReportMedicine" class="table table-striped table-bordered" style="width:100%">
+                                <thead>
+                                    <tr>
+                                        <th>Medicine Name</th>
+                                        <th>Quantity</th>
+                                        <th>Amount</th>
+                                    </tr>
+                                </thead>
+                                <tbody class="tbody">
+                                </tbody>
+                            </table>
                         </div>
                         <!-- /graph area -->
                     </div>
@@ -59,18 +60,22 @@
 @section scripts{
     <script>
         function convertDate(jsonDate) {
+            console.log(jsonDate);
             var date = new Date(parseInt(jsonDate.substr(6)));
             var month = ("0" + (date.getMonth() + 1)).slice(-2);
             return ("0" + date.getDate()).slice(-2) + '-' + month + '-' + date.getFullYear();
         } 
         //debugger;
         $(document).ready(function () {
-            var startDate = "21-04-2023";
+            var startDate = "Date";
             var stopDate = "21-04-2023";
+            var action = "Date";
+            console.log(action);
             $.ajax({
+
                 url: "/Report/AjaxMethod",
                 type: "GET",
-                data: { startDate: startDate, stopDate: stopDate },  
+                data: { action: action, startDate: startDate, stopDate: stopDate }, 
                 contentType: "application/json;charset=utf-8",
                 dataType: "json",
                 success: function (result) {
@@ -84,7 +89,33 @@
 
                     });
 
-                    $('#tblReport tbody').html(html);
+                    $('#tblReportDate tbody').html(html);
+
+                },
+                error: function (errormessage) {
+                    alert(errormessage.responseText);
+                }
+            });
+            action = "Medicine";
+            startDate = "Medicine";
+            $.ajax({
+                url: "/Report/AjaxMethod" ,
+                type: "GET",
+                data: { action: action, startDate: startDate, stopDate: stopDate },
+                contentType: "application/json;charset=utf-8",
+                dataType: "json",
+                success: function (result) {
+                    console.log(result);
+                    var html = "";
+                    $.each(result, function (key, item) {
+                        html += '<tr>'
+                        html += '<td>' + (item.Medicine_name) + '</td>' + '<td>' + item.totalquantity + '</td>' + '<td>' + item.price + '</td>';
+                        html += '<tr>'
+                        // html += '<option>' + item.patient_id + '</option>';
+
+                    });
+
+                    $('#tblReportMedicine tbody').html(html);
 
                 },
                 error: function (errormessage) {
